@@ -1,5 +1,3 @@
-"use client"
-
 function Menu({ isOpen, onClose }) {
   return (
     <div className={`menu ${isOpen ? "active" : ""}`}>
@@ -7,11 +5,21 @@ function Menu({ isOpen, onClose }) {
         X
       </button>
       <ul>
-        <li><Link to="/"        onClick={onClose}>HOME</Link></li>
-        <li><Link to="/projects" onClick={onClose}>PROJECTS</Link></li>
-        <li><Link to="/shorts"   onClick={onClose}>SHORTS</Link></li>
-        <li><Link to="/shop"     onClick={onClose}>SHOP</Link></li>
-        <li><Link to="/contact"  onClick={onClose}>CONTACT</Link></li>
+        <li>
+          <a href="#/">HOME</a>
+        </li>
+        <li>
+          <a href="#/projects">PROJECTS</a>
+        </li>
+        <li>
+          <a href="#/shorts">SHORTS</a>
+        </li>
+        <li>
+          <a href="#/shop">SHOP</a>
+        </li>
+        <li>
+          <a href="#/contact">CONTACT</a>
+        </li>
       </ul>
     </div>
   )

@@ -6,7 +6,7 @@ function FeaturedProjects() {
       id: 1,
       title: "PROJECT TITLE",
       description: "Creative direction and visual identity",
-      image: "assets/pic1.png",
+      image: "/placeholder.svg?height=400&width=300",
       alt: "Project 1",
     },
     {
