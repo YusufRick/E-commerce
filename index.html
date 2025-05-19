@@ -90,6 +90,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Menu functionality
             const menuToggle = document.querySelector('.menu-toggle');
             const menuClose = document.querySelector('.menu-close');
             const menu = document.querySelector('.menu');
@@ -104,10 +105,11 @@
                 document.body.style.overflow = 'auto';
             });
 
-            
+            // Marquee functionality
             const marqueeContent = document.querySelector('.marquee-content');
             marqueeContent.innerHTML += marqueeContent.innerHTML;
 
+            // Project hover effects
             const projects = document.querySelectorAll('.project');
             projects.forEach(project => {
                 project.addEventListener('mouseenter', function() {
@@ -118,6 +120,56 @@
                     this.querySelector('.project-info').style.transform = 'translateY(100%)';
                 });
             });
+            
+            // Add flickering effect
+            // Create flicker overlay if it doesn't exist
+            if (!document.querySelector('.flicker-overlay')) {
+                const flickerOverlay = document.createElement('div');
+                flickerOverlay.className = 'flicker-overlay';
+                document.body.appendChild(flickerOverlay);
+            }
+            
+            const flickerOverlay = document.querySelector('.flicker-overlay');
+            
+            // Function to create random flickering
+            function flicker() {
+                // Random intensity
+                const intensity = Math.random() * 0.15;
+                
+                // Random duration between 50ms and 300ms
+                const duration = 50 + Math.random() * 250;
+                
+                // Random delay before next flicker (between 1s and 8s)
+                const delay = 1000 + Math.random() * 7000;
+                
+                // Apply flicker
+                flickerOverlay.style.opacity = intensity;
+                
+                // Reset after duration
+                setTimeout(() => {
+                    flickerOverlay.style.opacity = 0;
+                    
+                    // Schedule next flicker
+                    setTimeout(flicker, delay);
+                }, duration);
+            }
+            
+            // Start flickering effect with initial delay
+            setTimeout(flicker, 2000);
+            
+            // Add occasional stronger flickers
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% chance of strong flicker
+                    const strongIntensity = 0.2 + Math.random() * 0.3;
+                    const strongDuration = 100 + Math.random() * 150;
+                    
+                    flickerOverlay.style.opacity = strongIntensity;
+                    
+                    setTimeout(() => {
+                        flickerOverlay.style.opacity = 0;
+                    }, strongDuration);
+                }
+            }, 5000); // Check every 5 seconds
         });
     </script>
 </body>
