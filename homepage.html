@@ -1,0 +1,101 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #fff;
+      color: #000;
+      font-family: 'TT Commons', sans-serif;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      padding: 1em 2em;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: green;
+      margin-left: 2em;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    #product { background: #f9f9f9; }
+    #audio { background: #e9e9e9; }
+    #visual { background: #d9d9d9; }
+
+    .button {
+      background-color: #FF5A36;
+      color: #fff;
+      padding: 0.5em 1.5em;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      margin-top: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #e44b2e;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div><strong>your brand</strong></div>
+    <div>
+      <a href="#product">Product</a>
+      <a href="#audio">Audio</a>
+      <a href="#visual">Visual</a>
+    </div>
+  </nav>
+
+  <section id="product">
+    <div>
+      <div>PRODUCT</div>
+      <button class="button" onclick="location.href='product.html'">View</button>
+    </div>
+  </section>
+
+  <section id="audio">
+    <div>
+      <div>AUDIO</div>
+      <button class="button" onclick="location.href='audio.html'">Listen</button>
+    </div>
+  </section>
+
+  <section id="visual">
+    <div>
+      <div>VISUAL</div>
+      <button class="button" onclick="location.href='visual.html'">Explore</button>
+    </div>
+  </section>
+
+</body>
+</html>
