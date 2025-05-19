@@ -12,10 +12,30 @@
           src: url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
           font-weight: bold;
        }
+       
+       /* Override flicker-overlay styles to ensure they work */
+       .flicker-overlay {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: #000;
+           pointer-events: none;
+           z-index: 20000;
+           opacity: 0;
+           /* Remove transition for more abrupt flickering */
+       }
+       
+       /* Increase film grain opacity */
+       .film-grain {
+           opacity: 0.25 !important;
+       }
     </style>
 </head>
 <body>
     <div class="film-grain"></div>
+    <div class="flicker-overlay"></div>
     <div class="container">
         <header>
             <!-- Logo removed -->
@@ -90,6 +110,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - initializing effects');
+            
             // Menu functionality
             const menuToggle = document.querySelector('.menu-toggle');
             const menuClose = document.querySelector('.menu-close');
@@ -121,55 +143,62 @@
                 });
             });
             
-            // Add flickering effect
-            // Create flicker overlay if it doesn't exist
-            if (!document.querySelector('.flicker-overlay')) {
-                const flickerOverlay = document.createElement('div');
-                flickerOverlay.className = 'flicker-overlay';
-                document.body.appendChild(flickerOverlay);
-            }
-            
+            // Enhanced flickering effect
             const flickerOverlay = document.querySelector('.flicker-overlay');
+            console.log('Flicker overlay element:', flickerOverlay);
             
-            // Function to create random flickering
-            function flicker() {
-                // Random intensity
-                const intensity = Math.random() * 0.15;
+            // Test if overlay is visible at all
+            flickerOverlay.style.opacity = 1;
+            console.log('Setting initial opacity to 1 for testing');
+            
+            setTimeout(() => {
+                flickerOverlay.style.opacity = 0;
+                console.log('Reset opacity to 0 after test');
                 
-                // Random duration between 50ms and 300ms
-                const duration = 50 + Math.random() * 250;
+                // Start the real flickering effect
+                startFlickering();
+            }, 1000);
+            
+            function startFlickering() {
+                console.log('Starting flickering effect');
                 
-                // Random delay before next flicker (between 1s and 8s)
-                const delay = 1000 + Math.random() * 7000;
-                
-                // Apply flicker
-                flickerOverlay.style.opacity = intensity;
-                
-                // Reset after duration
-                setTimeout(() => {
-                    flickerOverlay.style.opacity = 0;
+                function flicker() {
+                    // Higher intensity for better visibility
+                    const intensity = 0.3 + Math.random() * 0.4; // Between 0.3 and 0.7
+                    console.log('Flicker with intensity:', intensity);
                     
-                    // Schedule next flicker
-                    setTimeout(flicker, delay);
-                }, duration);
-            }
-            
-            // Start flickering effect with initial delay
-            setTimeout(flicker, 2000);
-            
-            // Add occasional stronger flickers
-            setInterval(() => {
-                if (Math.random() > 0.7) { // 30% chance of strong flicker
-                    const strongIntensity = 0.2 + Math.random() * 0.3;
-                    const strongDuration = 100 + Math.random() * 150;
+                    // Apply flicker
+                    flickerOverlay.style.opacity = intensity;
                     
-                    flickerOverlay.style.opacity = strongIntensity;
+                    // Shorter duration for more abrupt effect
+                    const duration = 30 + Math.random() * 100;
                     
                     setTimeout(() => {
                         flickerOverlay.style.opacity = 0;
-                    }, strongDuration);
+                        
+                        // Shorter delay between flickers
+                        const delay = 800 + Math.random() * 3000;
+                        setTimeout(flicker, delay);
+                    }, duration);
                 }
-            }, 5000); // Check every 5 seconds
+                
+                // Start immediately
+                flicker();
+                
+                // Add occasional stronger flickers
+                setInterval(() => {
+                    if (Math.random() > 0.6) { // 40% chance
+                        const strongIntensity = 0.5 + Math.random() * 0.5; // Between 0.5 and 1.0
+                        console.log('Strong flicker with intensity:', strongIntensity);
+                        
+                        flickerOverlay.style.opacity = strongIntensity;
+                        
+                        setTimeout(() => {
+                            flickerOverlay.style.opacity = 0;
+                        }, 50 + Math.random() * 80);
+                    }
+                }, 2000);
+            }
         });
     </script>
 </body>
