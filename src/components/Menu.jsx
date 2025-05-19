@@ -7,24 +7,11 @@ function Menu({ isOpen, onClose }) {
         X
       </button>
       <ul>
-        <li>
-          <a href="index.html">HOME</a>
-        </li>
-        <li>
-          <a href="#">PROJECTS</a>
-        </li>
-        <li>
-          <a href="#">SHORTS</a>
-        </li>
-        <li>
-          <a href="#">COLLECTION</a>
-        </li>
-        <li>
-          <a href="#">SHOP</a>
-        </li>
-        <li>
-          <a href="#">CONTACT</a>
-        </li>
+        <li><Link to="/"        onClick={onClose}>HOME</Link></li>
+        <li><Link to="/projects" onClick={onClose}>PROJECTS</Link></li>
+        <li><Link to="/shorts"   onClick={onClose}>SHORTS</Link></li>
+        <li><Link to="/shop"     onClick={onClose}>SHOP</Link></li>
+        <li><Link to="/contact"  onClick={onClose}>CONTACT</Link></li>
       </ul>
     </div>
   )
