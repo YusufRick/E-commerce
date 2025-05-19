@@ -1,13 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasahara</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-..."
+    crossorigin="anonymous"
+  >
+
+  <style>
+    body { margin: 0; background: #000; color: #fff; overflow-x: hidden; }
+    .navbar { background: transparent; }
+    .hero { position: relative; height: 100vh; overflow: hidden; }
+    #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 10vw;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: -0.05em;
+    }
+    section.work { padding: 4rem 0; }
+    .work-card {
+      background: #111;
+      border: none;
+      overflow: hidden;
+      transition: transform .3s;
+    }
+    .work-card:hover { transform: scale(1.03); }
+    .work-card img { width: 100%; display: block; }
+    footer { padding: 2rem 0; background: #111; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg fixed-top px-4">
+    <div class="d-flex flex-column align-items-start">
+      <a class="navbar-brand text-white fw-bold mb-2" href="#">Kasahara</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navMenu" aria-controls="navMenu"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="#work">Work</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <header class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <h1>Kasahara</h1>
+
+      <a href="#work" class="btn btn-outline-light btn-lg mt-4">
+        Click here
+      </a>
+    </div>
+  </header>
+
+  <!-- Work Section -->
+  <section id="work" class="work container">
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card work-card">
+          <img src="https://via.placeholder.com/600x400" alt="Project 1">
+          <div class="card-body">
+            <h5 class="card-title">Project Title 1</h5>
+            <p class="card-text text-muted">Short description of the work.</p>
+          </div>
+        </div>
+      </div>
+      <!-- …more cards… -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-muted">
+    &copy; 2025 AWGE. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-..."
+    crossorigin="anonymous"
+  ></script>
+  <!-- Three.js for the hero background -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script>
+    // Minimal Three.js scene to clear the canvas black
+    const canvas = document.getElementById('hero-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    function resize() {
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    renderer.setAnimationLoop(() => {
+      renderer.render(new THREE.Scene(), new THREE.PerspectiveCamera());
+    });
+  </script>
+</body>
 </html>
