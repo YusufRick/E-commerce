@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasahara</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,300&display=swap" rel="stylesheet">
     <style>
        @font-face {
-    font-family: 'Alte Haas Grotesk Bold';
-    src: url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
-    font-weight: bold;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,300&display=swap');
-
-
+          font-family: 'Alte Haas Grotesk Bold';
+          src: url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
+          font-weight: bold;
+       }
     </style>
 </head>
 <body>
+    <div class="film-grain"></div>
     <div class="container">
         <header>
             <!-- Logo removed -->
@@ -106,11 +104,10 @@
                 document.body.style.overflow = 'auto';
             });
 
-            // Duplicate marquee content for continuous scrolling
+            
             const marqueeContent = document.querySelector('.marquee-content');
             marqueeContent.innerHTML += marqueeContent.innerHTML;
 
-            // Add hover effect to projects
             const projects = document.querySelectorAll('.project');
             projects.forEach(project => {
                 project.addEventListener('mouseenter', function() {
