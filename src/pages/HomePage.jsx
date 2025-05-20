@@ -3,6 +3,8 @@ import Cart from '../components/Cart';
 import Logo360 from '../components/Logo360';
 import { motion } from 'framer-motion';
 
+import CartIcon from '../assets/cart.icon.png';
+
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -22,7 +24,7 @@ export default function HomePage({ go }) {
           onClick={() => setCartOpen(true)}
           aria-label="Open cart"
         >
-          🛒
+          <img src={CartIcon} alt="Cart" className="cart-icon" />
         </button>
       </header>
 

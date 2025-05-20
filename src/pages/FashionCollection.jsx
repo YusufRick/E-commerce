@@ -19,7 +19,7 @@ export default function FashionCollection() {
       </button>
 
       
-      <h2 className='Tittle'>Fashion Collection</h2>
+      <h2 className='Tittle'>COLLECTION</h2>
 
       <div className="grid">
         {items.map((item) => (

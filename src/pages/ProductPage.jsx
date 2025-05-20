@@ -10,6 +10,7 @@ const products = {
 };
 
 export default function ProductPage() {
+  
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
