@@ -4,6 +4,7 @@ import Logo360 from '../components/Logo360';
 import { motion } from 'framer-motion';
 
 import CartIcon from '../assets/cart.icon.png';
+import ShirtIcon from '../assets/shirt-icon.png';
 
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
@@ -59,12 +60,15 @@ export default function HomePage({ go }) {
       {/* Card-style nav */}
       <div className="main-nav">
         <div className="nav-item fashion" onClick={() => go('/fashion')}>
+          <img src={ShirtIcon} alt="" className="nav-icon" />
           <div className="overlay">Fashion Collection</div>
         </div>
         <div className="nav-item short-films" onClick={() => go('/short-films')}>
+          <img src='#' alt="" className="nav-icon" />
           <div className="overlay">Short Films</div>
         </div>
         <div className="nav-item projects" onClick={() => go('/projects')}>
+          <img src='#' alt="" className="nav-icon" />
           <div className="overlay">Projects</div>
         </div>
       </div>
