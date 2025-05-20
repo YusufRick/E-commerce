@@ -1,52 +1,36 @@
-import { useState } from "react"
-import { HashRouter, Routes, Route } from "react-router-dom"
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import PageTransition from './components/PageTransition';
+import Router from './router';
+import { Suspense } from 'react';
 
-import Header from "./components/Header"
-import Menu from "./components/Menu"
-import Footer from "./components/Footer"
-import FilmGrain from "./components/effects/FilmGrain"
-import FlickerOverlay from "./components/effects/FlickerOverlay"
+export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [inOut, setInOut] = useState(false);
+  const [nextPath, setNextPath] = useState(null);
 
-import Home from "./pages/Home"
-import Projects from "./pages/Projects"
-import Shorts from "./pages/Shorts"
-import Shop from "./pages/Shop"
-import Contact from "./pages/Contact"
+  // trigger a wipe transition then navigate
+  const go = (path) => {
+    if (location.pathname === path) return;
+    setNextPath(path);
+    setInOut(true);
+  };
 
-import "./App.css"
-
-function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    const next = !isMenuOpen
-    setIsMenuOpen(next)
-    document.body.style.overflow = next ? "hidden" : "auto"
-  }
+  // after wipe-out, perform navigation & wipe-in
+  const onTransitionFinish = () => {
+    if (inOut && nextPath) {
+      navigate(nextPath);
+      setInOut(false);
+    }
+  };
 
   return (
-    <HashRouter>
-      <div className="app-wrapper">
-        <FilmGrain />
-        <FlickerOverlay />
-
-        <Header onMenuToggle={toggleMenu} />
-        <Menu isOpen={isMenuOpen} onClose={toggleMenu} />
-
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/shorts" element={<Shorts />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
-          <Footer />
-        </div>
-      </div>
-    </HashRouter>
-  )
+    <>
+      <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
+      <Suspense fallback={<div className="loader">Loading…</div>}>
+        <Router go={go} />
+      </Suspense>
+    </>
+  );
 }
-
-export default App
