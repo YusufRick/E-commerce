@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PageTransition from './components/PageTransition';
+import NoiseOverlay from './components/NoiseOverlay';
 import Router from './router';
 import { Suspense } from 'react';
 
@@ -27,6 +28,7 @@ export default function App() {
 
   return (
     <>
+      <NoiseOverlay/>
       <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
       <Suspense fallback={<div className="loader">Loading…</div>}>
         <Router go={go} />
