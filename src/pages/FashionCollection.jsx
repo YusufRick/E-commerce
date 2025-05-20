@@ -12,7 +12,7 @@ export default function FashionCollection() {
   const navigate = useNavigate();
 
   return (
-    <div className="fashion">
+    <div className="card">
       {/* Back button */}
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back

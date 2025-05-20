@@ -4,6 +4,8 @@ import PageTransition from './components/PageTransition';
 import NoiseOverlay from './components/NoiseOverlay';
 import Router from './router';
 import { Suspense } from 'react';
+import StaticVideo from './components/StaticVideo';
+import StaticCanvas   from './components/StaticCanvas';
 
 export default function App() {
   const location = useLocation();
@@ -28,6 +30,7 @@ export default function App() {
 
   return (
     <>
+      
       <NoiseOverlay/>
       <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
       <Suspense fallback={<div className="loader">Loading…</div>}>

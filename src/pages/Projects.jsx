@@ -12,7 +12,7 @@ const items = [1, 2, 3, 4].map((i) => ({
 export default function Projects() {
   const navigate = useNavigate();
   return (
-    <div className="fashion">
+    <div className="card">
       
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back

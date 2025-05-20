@@ -34,9 +34,9 @@ export default function HomePage({ go }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
       >
-        <Logo360 />
+        
 
-        {/* Bigger title */}
+        
         <motion.h1
           className="site-title"
           initial={{ y: 50, opacity: 0 }}

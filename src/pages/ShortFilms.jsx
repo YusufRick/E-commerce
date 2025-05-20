@@ -13,7 +13,7 @@ export default function ShortFilms() {
   const navigate = useNavigate();
   
   return (
-    <div className="fashion">
+    <div className="card">
       
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back
