@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import CartIcon from '../assets/cart.icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
+import ShortFilmsIcon from '../assets/cam2.png';
 
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
@@ -64,7 +65,7 @@ export default function HomePage({ go }) {
           <div className="overlay">Fashion Collection</div>
         </div>
         <div className="nav-item short-films" onClick={() => go('/short-films')}>
-          <img src='#' alt="" className="nav-icon" />
+          <img src={ShortFilmsIcon} alt="" className="nav-icon" />
           <div className="overlay">Short Films</div>
         </div>
         <div className="nav-item projects" onClick={() => go('/projects')}>
