@@ -7,7 +7,7 @@ export default function LandingPage({ go }) {
     <div className="landing">
       <Logo360 />
       <button className="start-btn" onClick={() => go('/home')}>
-        Press Start
+        Start
       </button>
     </div>
   );
