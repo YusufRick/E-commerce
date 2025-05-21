@@ -45,7 +45,7 @@ export default function HomePage({ go }) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          KASAHARA
+          kasahara 
         </motion.h1>
 
         {/* Hidden background audio */}
