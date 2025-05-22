@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import PageTransition from './components/PageTransition';
 import NoiseOverlay from './components/NoiseOverlay';
 import Router from './router';
 import { Suspense } from 'react';
-import StaticVideo from './components/StaticVideo';
-import StaticCanvas   from './components/StaticCanvas';
+
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const [inOut, setInOut] = useState(false);
   const [nextPath, setNextPath] = useState(null);
+
+    const pageVariants = {
+    initial: { clipPath: 'inset(0% 0% 0% 0%)' },
+    animate: { clipPath: 'inset(0% 100% 0% 0%)' },
+    exit:    { clipPath: 'inset(0% 0% 0% 0%)' },
+  };
 
   // trigger a wipe transition then navigate
   const go = (path) => {
@@ -31,8 +37,10 @@ export default function App() {
   return (
     <>
       
-      <NoiseOverlay/>
-      <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
+      <NoiseOverlay />
+     {inOut && (
+       <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
+     )}
       <Suspense fallback={<div className="loader">Loading…</div>}>
         <Router go={go} />
       </Suspense>

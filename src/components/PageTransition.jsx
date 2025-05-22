@@ -16,6 +16,7 @@ export default function PageTransition({ inOut, onFinish }) {
     camera.position.z = 1;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(width, height);
     mount.current.appendChild(renderer.domElement);
 
@@ -50,7 +51,9 @@ export default function PageTransition({ inOut, onFinish }) {
           vec4 c2 = texture2D(uTexture2, uv2);
           gl_FragColor = mix(c1, c2, uProgress);
         }
-      `
+      `,
+      transparent: true,                 // ← allow alpha in your shader to composite
+      blending: THREE.NormalBlending,
     });
     matRef.current = mat;
 

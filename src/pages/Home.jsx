@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Cart from '../components/Cart';
+import Logo360 from '../components/Logo360';
 import { motion } from 'framer-motion';
+
 import CartIcon from '../assets/cart.icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
 import ShortFilmsIcon from '../assets/cam2.png';
