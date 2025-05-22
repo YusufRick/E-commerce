@@ -1,49 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import PageTransition from './components/PageTransition';
-import NoiseOverlay from './components/NoiseOverlay';
-import Router from './router';
-import { Suspense } from 'react';
 
+import NoiseOverlay   from './components/NoiseOverlay';
+import Router         from './router';
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [inOut, setInOut] = useState(false);
-  const [nextPath, setNextPath] = useState(null);
+  const [isWiping, setIsWiping] = useState(false);
+  const [nextPath, setNextPath] = useState(location.pathname);
 
-    const pageVariants = {
-    initial: { clipPath: 'inset(0% 0% 0% 0%)' },
-    animate: { clipPath: 'inset(0% 100% 0% 0%)' },
-    exit:    { clipPath: 'inset(0% 0% 0% 0%)' },
-  };
-
-  // trigger a wipe transition then navigate
+  // Called by pages instead of useNavigate()
   const go = (path) => {
-    if (location.pathname === path) return;
+    if (path === location.pathname) return;
     setNextPath(path);
-    setInOut(true);
+    setIsWiping(false);
   };
 
-  // after wipe-out, perform navigation & wipe-in
-  const onTransitionFinish = () => {
-    if (inOut && nextPath) {
-      navigate(nextPath);
-      setInOut(false);
-    }
+  // After the wipe‐out finishes, do the actual navigation
+  const onWipeComplete = () => {
+    navigate(nextPath);
+    setIsWiping(true);
   };
 
   return (
     <>
-      
+      {/* CRT static behind everything */}
       <NoiseOverlay />
-     {inOut && (
-       <PageTransition inOut={inOut} onFinish={onTransitionFinish} />
-     )}
-      <Suspense fallback={<div className="loader">Loading…</div>}>
-        <Router go={go} />
-      </Suspense>
+
+      {/* Wipe‐out overlay */}
+      <AnimatePresence>
+        {isWiping && (
+          <motion.div
+            key="wipe"
+            initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+            animate={{ clipPath: 'inset(0% 100% 0% 0%)' }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            style={{
+              position: 'fixed',
+              top: 0, left: 0,
+              width: '100vw', height: '100vh',
+              background: '#000',
+              zIndex: 9999,
+              pointerEvents: 'none'
+            }}
+            onAnimationComplete={onWipeComplete}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Your actual routes fade in/out */}
+      <div style={{ pointerEvents: isWiping ? 'none' : 'auto' }}>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ position: 'relative', zIndex: 1 }}
+          >
+            <Suspense fallback={<div className="loader">Loading…</div>}>
+              <Router go={go} />
+            </Suspense>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </>
   );
 }

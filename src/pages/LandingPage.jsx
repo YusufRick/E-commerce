@@ -1,10 +1,7 @@
-// src/pages/LandingPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage({ go }) {
-  const navigate = useNavigate();
   return (
     <div className="landing">
       <motion.h1
@@ -18,9 +15,9 @@ export default function LandingPage({ go }) {
 
       <button
         className="start-btn"
-        onClick={() => navigate('/homePage')}
+        onClick={() => go('/HomePage')}
       >
-         Start
+        Press Start
       </button>
     </div>
   );

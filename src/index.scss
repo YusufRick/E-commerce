@@ -371,3 +371,14 @@ html, body, #root {
   transform-origin: center center;
 }
 
+//landing page
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical centering */
+  align-items: center;      /* horizontal centering */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
