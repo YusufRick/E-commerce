@@ -15,13 +15,13 @@ export default function App() {
   const go = (path) => {
     if (path === location.pathname) return;
     setNextPath(path);
-    setIsWiping(false);
+    setIsWiping(true);
   };
 
   // After the wipe‐out finishes, do the actual navigation
   const onWipeComplete = () => {
     navigate(nextPath);
-    setIsWiping(true);
+    setIsWiping(false);
   };
 
   return (
