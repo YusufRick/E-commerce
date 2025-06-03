@@ -3,7 +3,7 @@ import Cart from '../components/Cart';
 import Logo360 from '../components/Logo360';
 import { motion } from 'framer-motion';
 
-import CartIcon from '../assets/cart.icon.png';
+import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
 import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/can.icon.png';
@@ -51,7 +51,7 @@ export default function HomePage({ go }) {
         {/* Hidden background audio */}
         <audio
           id="bg-audio"
-          src="/src/assets/your-audio-file.mp3" //audio put here
+          src="/src/assets/CHRYSALIS_WEBSITE.wav"//audio put here
           autoPlay
           loop
           style={{ display: 'none' }}

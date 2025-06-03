@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <>
-      {/* CRT static behind everything */}
+      
       <NoiseOverlay />
 
       {/* Wipe‐out overlay */}
