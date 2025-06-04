@@ -55,6 +55,12 @@ html, body, #root {
   color: #fff; cursor: pointer;
   transition: transform .3s, opacity .3s;
 }
+.start-icon{
+  width: 150px;   /* adjust as needed */
+  height: 150px;
+
+
+}
 .start-btn:hover {
   transform: scale(1.05); opacity: 0.9;
 }
@@ -70,6 +76,12 @@ html, body, #root {
   background: none; border: none; font-size: 1.5rem;
   color: #fff; cursor: pointer;
   transition: transform .3s, opacity .3s;
+}
+.start-btn{
+  background: none; border: none; font-size: 1.5rem;
+  color: #fff; cursor: pointer;
+  transition: transform .3s, opacity .3s;
+
 }
 .cart-btn:hover {
   transform: scale(1.1); opacity: 0.8;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import StartIcon from '../assets/start.png';
 
 export default function LandingPage({ go }) {
   return (
@@ -12,12 +13,12 @@ export default function LandingPage({ go }) {
       >
         KASAHARA
       </motion.h1>
-
       <button
         className="start-btn"
         onClick={() => go('/HomePage')}
-      >
-        Press Start
+                
+        >
+        <img src={StartIcon} alt="Start" className="start-icon" />
       </button>
     </div>
   );
