@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import NoiseOverlay   from './components/NoiseOverlay';
 import Router         from './router';
+import Footer from './pages/Footer';
 
 export default function App() {
   const location = useLocation();
@@ -66,6 +67,9 @@ export default function App() {
             </Suspense>
           </motion.div>
         </AnimatePresence>
+        <Footer/>
+        
+        
       </div>
     </>
   );

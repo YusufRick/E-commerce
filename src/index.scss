@@ -55,11 +55,23 @@ html, body, #root {
   color: #fff; cursor: pointer;
   transition: transform .3s, opacity .3s;
 }
+
+//start icon
 .start-icon{
-  width: 150px;   /* adjust as needed */
-  height: 150px;
+  width: auto;   /* adjust as needed */
+  height: 200px;
+  animation: blinker 2s linear infinite;
 
 
+}
+
+@keyframes blinker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 .start-btn:hover {
   transform: scale(1.05); opacity: 0.9;
@@ -129,7 +141,7 @@ html, body, #root {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem; 
-  margin-top:  -1.5rem;
+  margin: auto;
 }
 .main-nav button {
   background: transparent; border: none;
@@ -191,12 +203,13 @@ html, body, #root {
   display: block;
 }
 
-/* ——— enlarge the title ——— */
+//tittle
 .site-title {
   font-size: 4rem;
   margin-bottom: 4rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  position: relative;
 }
 
 /* ——— card-style nav container ——— */
@@ -228,12 +241,12 @@ html, body, #root {
 .nav-item.short-films  { background-image: url(''); }
 .nav-item.projects     { background-image: url(''); }
 
-
+//nav icon
 .nav-item .nav-icon {
   position: absolute;
   top: 50%;
   left: 30%;
-  width: 100px;    /* adjust as needed */
+  width: auto;   
   height: 100px;
   animation: spinY 15s linear infinite;
   

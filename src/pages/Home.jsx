@@ -7,6 +7,7 @@ import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
 import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/can.icon.png';
+import Footer from './Footer';
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -64,15 +65,18 @@ export default function HomePage({ go }) {
           <img src={ShirtIcon} alt="" className="nav-icon" />
           <div className="overlay">Fashion Collection</div>
         </div>
+
         <div className="nav-item short-films" onClick={() => go('/short-films')}>
           <img src={ShortFilmsIcon} alt="" className="nav-icon" />
           <div className="overlay">Short Films</div>
         </div>
+
         <div className="nav-item projects" onClick={() => go('/projects')}>
           <img src={CanIcon} alt="" className="nav-icon" />
           <div className="overlay">Projects</div>
         </div>
-      </div>
+        
+      </div>   
     </div>
   );
 }
