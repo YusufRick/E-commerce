@@ -135,10 +135,10 @@ html, body, #root {
   align-items: center; 
   justify-content: flex-start;
   padding-top: 3rem;  
-  height: 40vh;
 }
 .main-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 1rem; 
   margin: auto;
@@ -223,6 +223,7 @@ html, body, #root {
 .nav-item {
   width: 20%;
   height: 250px;
+  flex-direction: column;
   background-size: cover;
   background-position: center;
   align-items: center;
@@ -231,7 +232,6 @@ html, body, #root {
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.3s ease;
-  margin-bottom: 5rem;
   display: flex;
   
 }
@@ -410,4 +410,25 @@ video.vid{
   display: block;
   align-items: center;
   margin: auto;
+}
+
+//footer
+
+.footer{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  background-color: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }

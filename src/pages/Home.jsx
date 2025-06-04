@@ -75,8 +75,19 @@ export default function HomePage({ go }) {
           <img src={CanIcon} alt="" className="nav-icon" />
           <div className="overlay">Projects</div>
         </div>
+
         
       </div>   
+        
+        <motion.h4
+          className="footer"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          @Kasahara all reserved Copyrights 
+        </motion.h4>
+
     </div>
   );
 }

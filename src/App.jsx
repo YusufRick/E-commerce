@@ -67,7 +67,7 @@ export default function App() {
             </Suspense>
           </motion.div>
         </AnimatePresence>
-        <Footer/>
+        
         
         
       </div>
