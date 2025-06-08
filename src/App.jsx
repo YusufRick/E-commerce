@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import NoiseOverlay   from './components/NoiseOverlay';
 import Router         from './router';
-import bgAudioFile from './assets/CHRYSALIS_WEBSITE.wav';
+import bgAudioFile from './assets/CHRYSALIS_WEBSITE.mp3';
 
 export default function App() {
   const location = useLocation();

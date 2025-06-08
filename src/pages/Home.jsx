@@ -9,7 +9,7 @@ import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/can.icon.png';
 
 // 1️⃣ Import so the bundler resolves the path
-import bgAudioFile from '../assets/CHRYSALIS_WEBSITE.wav';
+import bgAudioFile from '../assets/CHRYSALIS_WEBSITE.mp3';
 
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
