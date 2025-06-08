@@ -419,7 +419,6 @@ video.vid{
   justify-content: center;
   padding: 20px;
   margin: auto;
-  background-color: #111;
   color: #fff;
   padding: 2rem 1rem;
   font-size: 0.9rem;
@@ -431,4 +430,48 @@ video.vid{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  background-color: transparent;
+}
+
+//Contact page
+
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 2rem;
+  background-color:transparent;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  color: white;
+  margin:auto;
+}
+
+.links-container {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  margin: auto;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.contact-link:hover {
+  transform: translateY(-4px);
+}
+
+.link-text {
+  margin-top: 0.5rem;
+  font-size: 1rem;
 }

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
 import ShortFilmsIcon from '../assets/cam2.png';
-import CanIcon from '../assets/can.icon.png';
+import CanIcon from '../assets/camera-icon.png';
 
 // 1️⃣ Import so the bundler resolves the path
 import bgAudioFile from '../assets/CHRYSALIS_WEBSITE.mp3';
@@ -62,9 +62,9 @@ export default function HomePage({ go }) {
           <div className="overlay">Collection</div>
         </div>
 
-        <div className="nav-item short-films" onClick={() => go('/short-films')}>
-          <img src={ShortFilmsIcon} alt="Short Films" className="nav-icon" />
-          <div className="overlay">Short Films</div>
+        <div className="nav-item short-films" onClick={() => go('/contact')}>
+          <img src={ShortFilmsIcon} alt="Contact" className="nav-icon" />
+          <div className="overlay">Contact</div>
         </div>
 
         <div className="nav-item projects" onClick={() => go('/visual')}>

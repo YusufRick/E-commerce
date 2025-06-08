@@ -10,6 +10,7 @@ const ShortFilms        = lazy(() => import('./pages/ShortFilms'));
 const Visuals          = lazy(() => import('./pages/Visual'));
 const ShortVid          = lazy(() => import('./pages/ViewShorts'))
 const ViewVisual        = lazy(() => import('./pages/viewVisual'))
+const Contact           = lazy(() => import('./pages/Contact'));
 
 export default function Router({ go }) {
   return (
@@ -22,6 +23,7 @@ export default function Router({ go }) {
       <Route path="/short-films" element={<ShortFilms go={go} />} />
       <Route path="/visual"    element={<Visuals go={go} />} />
       <Route path="/view_visual/:id"    element={<ViewVisual go={go} />} />
+      <Route path="/contact" element={<Contact go={go} />} />
 
     </Routes>
   );
