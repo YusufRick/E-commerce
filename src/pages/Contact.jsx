@@ -17,7 +17,6 @@ export default function Contact() {
           aria-label="Email"
         >
           <FaEnvelope size={50} />
-          <span className="link-text">Email</span>
         </a>
         <a
           href="https://www.instagram.com/kasahara.co"
@@ -27,7 +26,6 @@ export default function Contact() {
           aria-label="Instagram"
         >
           <FaInstagram size={50} />
-          <span className="link-text">Instagram</span>
         </a>
         <a
           href="https://www.tiktok.com/@kasahara.co"
@@ -37,7 +35,6 @@ export default function Contact() {
           aria-label="TikTok"
         >
           <FaTiktok size={50} />
-          <span className="link-text">TikTok</span>
         </a>
       </div>
     </div>
