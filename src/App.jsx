@@ -1,17 +1,38 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState,useRef,useEffect, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import NoiseOverlay   from './components/NoiseOverlay';
 import Router         from './router';
-import Footer from './pages/Footer';
+import bgAudioFile from './assets/CHRYSALIS_WEBSITE.wav';
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isWiping, setIsWiping] = useState(false);
   const [nextPath, setNextPath] = useState(location.pathname);
+  const audioRef = useRef(null);
+  
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => {
+        // autoplay blocked, but still muted
+      });
+    }
+  }, []);
 
+  // 2️⃣ On first click anywhere, unmute so you actually hear it
+  useEffect(() => {
+    const unmute = () => {
+      if (audioRef.current) {
+        audioRef.current.muted = false;
+        audioRef.current.play().catch(() => {});
+      }
+      window.removeEventListener('click', unmute);
+    };
+    window.addEventListener('click', unmute);
+    return () => window.removeEventListener('click', unmute);
+  }, []);
   // Called by pages instead of useNavigate()
   const go = (path) => {
     if (path === location.pathname) return;
@@ -27,6 +48,15 @@ export default function App() {
 
   return (
     <>
+
+    <audio
+        ref={audioRef}
+        src={bgAudioFile}
+        autoPlay
+        loop
+        muted
+        style={{ display: 'none' }}
+      />
       
       <NoiseOverlay />
 

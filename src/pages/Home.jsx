@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/HomePage.jsx
+import React, { useState, useEffect, useRef } from 'react';
 import Cart from '../components/Cart';
-import Logo360 from '../components/Logo360';
 import { motion } from 'framer-motion';
 
 import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/shirt-icon.png';
 import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/can.icon.png';
-import Footer from './Footer';
+
+// 1️⃣ Import so the bundler resolves the path
+import bgAudioFile from '../assets/CHRYSALIS_WEBSITE.wav';
+
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);
+  const audioRef = useRef(null);
 
-  // Attempt autoplay on mount
-  useEffect(() => {
-    const bg = document.getElementById('bg-audio');
-    if (bg) bg.play().catch(() => {});
-  }, []);
 
   return (
     <div className="home">
@@ -37,47 +36,44 @@ export default function HomePage({ go }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
       >
-        
-
-        
         <motion.h1
           className="site-title"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          kasahara 
+          kasahara
         </motion.h1>
 
-        {/* Hidden background audio */}
+        {/* hidden audio element */}
         <audio
-          id="bg-audio"
-          src="/src/assets/CHRYSALIS_WEBSITE.wav"//audio put here
+          ref={audioRef}
+          src={bgAudioFile}
           autoPlay
           loop
+          muted
           style={{ display: 'none' }}
         />
       </motion.section>
 
-      {/* Card-style nav */}
       <div className="main-nav">
         <div className="nav-item fashion" onClick={() => go('/fashion')}>
-          <img src={ShirtIcon} alt="" className="nav-icon" />
-          <div className="overlay">Fashion Collection</div>
+          <img src={ShirtIcon} alt="Fashion" className="nav-icon" />
+          <div className="overlay">Collection</div>
         </div>
 
         <div className="nav-item short-films" onClick={() => go('/short-films')}>
-          <img src={ShortFilmsIcon} alt="" className="nav-icon" />
+          <img src={ShortFilmsIcon} alt="Short Films" className="nav-icon" />
           <div className="overlay">Short Films</div>
         </div>
 
-        <div className="nav-item projects" onClick={() => go('/projects')}>
-          <img src={CanIcon} alt="" className="nav-icon" />
-          <div className="overlay">Projects</div>
+        <div className="nav-item projects" onClick={() => go('/visual')}>
+          <img src={CanIcon} alt="Visuals" className="nav-icon" />
+          <div className="overlay">Visuals</div>
         </div>
+      </div>
 
-        
-      </div>   
+      <div>
         
         <motion.h4
           className="footer"
@@ -87,7 +83,10 @@ export default function HomePage({ go }) {
         >
           @Kasahara all reserved Copyrights 
         </motion.h4>
-
+      </div>
+      
     </div>
+
+    
   );
 }

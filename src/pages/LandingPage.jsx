@@ -1,8 +1,13 @@
+// src/pages/LandingPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import StartIcon from '../assets/start.png';
 
 export default function LandingPage({ go }) {
+  const handleStart = () => {
+    go('/HomePage');
+  };
+
   return (
     <div className="landing">
       <motion.h1
@@ -13,11 +18,8 @@ export default function LandingPage({ go }) {
       >
         KASAHARA
       </motion.h1>
-      <button
-        className="start-btn"
-        onClick={() => go('/HomePage')}
-                
-        >
+
+      <button className="start-btn" onClick={handleStart}>
         <img src={StartIcon} alt="Start" className="start-icon" />
       </button>
     </div>

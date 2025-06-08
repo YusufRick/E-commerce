@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
+import products from '../pages/viewVisual'
 
 const items = [1, 2, 3, 4].map((i) => ({
   id: i,
-  name: `Projects ${i}`,
-  price: `$${i * 50 + 50}`,
+  name: `Visual ${i}`,
+  description: `bla bla bla`,
   image: `/src/assets/projects-${i}.jpg`,
 }));
 
-export default function Projects() {
+export default function Visual() {
   const navigate = useNavigate();
-  const { addToCart } = useContext(CartContext);
   const [cartOpen, setCartOpen] = useState(false);
 
   return (
@@ -38,7 +38,7 @@ export default function Projects() {
         </button>
       </header>
 
-      <h2 className="Tittle">PROJECTS</h2>
+      <h2 className="Tittle">VISUALS</h2>
 
       <div className="grid">
         {items.map((item) => (
@@ -47,7 +47,7 @@ export default function Projects() {
               src={item.image}
               alt={item.name}
               loading="lazy"
-              onClick={() => navigate(`/product/${item.id}`)}
+              onClick={() => navigate(`/view_visual/${item.id}`)}
             />
             <p>{item.name}</p>
             
