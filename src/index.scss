@@ -50,7 +50,6 @@ html, body, #root {
   height: 100%;
 }
 .start-btn {
-  margin-top: 2rem; padding: 1rem 2rem;
   background: transparent; border: 2px solid #fff;
   color: #fff; cursor: pointer;
   transition: transform .3s, opacity .3s;
@@ -59,8 +58,10 @@ html, body, #root {
 //start icon
 .start-icon{
   width: auto;   /* adjust as needed */
+  align-items:first baseline;
   height: 200px;
   animation: blinker 2s linear infinite;
+  margin-top: -10rem;
 
 
 }
@@ -206,16 +207,23 @@ html, body, #root {
 //tittle
 .site-title {
   font-size: 4rem;
-  margin-bottom: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  width: 50%;
+  height: 75%;
   position: relative;
+}
+
+.home-title{
+  width: 50%;
+  height: 75%;
+  position: relative;
+  margin-top: -15rem;
 }
 
 /* ——— card-style nav container ——— */
 .main-nav {
   display: flex;
   margin-bottom: 5px;
+  margin-top: -25rem;
   
 }
 
