@@ -58,7 +58,7 @@ export default function HomePage({ go }) {
           <div className="overlay">Collection</div>
         </div>
 
-        <div className="nav-item contact" onClick={() => go('/contact')}>
+        <div className="nav-item contact" onClick={() => go('/About')}>
           <img src={Media} alt="Contact" className="nav-icon" />
           <div className="overlay">Contact</div>
         </div>
