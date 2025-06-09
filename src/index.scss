@@ -1,13 +1,12 @@
 /* Reset + Dark Background */
 html, body, #root {
-  margin: 0; padding: 0; height: 100%; overflow: hidden;
-  background: #000; color: #fff; font-family: sans-serif;
-  //background: url('/monitor-frame.png') center center no-repeat,
-  //    url('/noise.png') repeat;
+  margin: 0; padding: 0; height: 100%; 
+  overflow:hidden;
+  background: #000; 
+  color: #fff; 
+  font-family: sans-serif;
   background-size: 
-    /* frame covers viewport */
     cover,
-    /* noise tiles at its natural size */
     auto;
 }
 
@@ -86,9 +85,12 @@ html, body, #root {
   display: flex; justify-content: flex-end; padding: 1rem;
 }
 .cart-btn {
-  background: none; border: none; font-size: 1.5rem;
+  background: none; border: none; 
+  font-size: 1.5rem;
   color: #fff; cursor: pointer;
   transition: transform .3s, opacity .3s;
+  width: 25%;
+  height: 75%;
 }
 .start-btn{
   background: none; border: none; font-size: 1.5rem;
@@ -103,7 +105,7 @@ html, body, #root {
 /* Cart Sidebar */
 .cart-sidebar {
   position: fixed; top: 0; right: -320px;
-  width: 320px; height: 100%; background: #111;
+  width: auto; height: 100%; background: #111;
   transition: right .3s ease; padding: 1rem; z-index: 1000;
 }
 .cart-sidebar.open { right: 0; }
@@ -138,11 +140,16 @@ html, body, #root {
   padding-top: 3rem;  
 }
 .main-nav {
-  display: flex;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-evenly;
+  // gap: 1rem; 
+  // margin: auto;
+    display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 1rem; 
-  margin: auto;
+  gap: 1rem;
+  margin: 2rem auto;
 }
 .main-nav button {
   background: transparent; border: none;
@@ -215,8 +222,7 @@ html, body, #root {
 .home-title{
   width: 50%;
   height: 75%;
-  position: relative;
-  margin-top: -15rem;
+
 }
 
 /* ——— card-style nav container ——— */
@@ -244,6 +250,7 @@ html, body, #root {
   
 }
 
+
 // background image here
 .nav-item.fashion      { background-image: url(''); } 
 .nav-item.short-films  { background-image: url(''); }
@@ -251,7 +258,7 @@ html, body, #root {
 
 //nav icon
 .nav-item .nav-icon {
-  position: absolute;
+  
   top: 50%;
   left: 30%;
   width: auto;   
@@ -385,8 +392,8 @@ html, body, #root {
 }
 /* size the imported PNG */
 .cart-btn .cart-icon {
-  width: 100px;   /* adjust as needed */
-  height: 100px;
+  width: 50%;   /* adjust as needed */
+  height: 50%;
   animation: spin 20s linear infinite;
   transform-origin: center center;
 }
@@ -481,7 +488,7 @@ video.vid{
   padding: 4rem 1rem;
   font-family: sans-serif;
   color: #eee;
-  background: #111;
+  background-color: transparent;
 }
 
 .hero-section {
@@ -506,7 +513,7 @@ video.vid{
 }
 
 .content-section {
-  background: rgba(0, 0, 0, 0.6);
+  
   padding: 2rem;
   border-radius: 6px;
   backdrop-filter: blur(2px);

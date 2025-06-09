@@ -1,0 +1,138 @@
+/* HomePage.css */
+
+/* Container */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: transparent;
+  color: #fff;
+  overflow-y:hidden;
+  position: relative; /* for absolute children */
+}
+
+/* Header/cart */
+.header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+.cart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.cart-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.cart-icon {
+  width: 50%;
+  height: 75%;
+  animation: spin 20s linear infinite;
+  transform-origin: center center;
+}
+
+/* Hero/logo */
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.home-title {
+  width: 300px;      /* increase size */
+  max-width: 80vw;   /* stay responsive */
+  height: auto;
+}
+
+/* Nav grid below logo */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 2rem;  /* spacing under logo */
+}
+
+/* Individual card */
+.nav-item {
+  position: relative;
+  background: transparent;
+  border-radius: 12px;
+  width: 160px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s, background 0.3s;
+}
+.nav-item:hover {
+  transform: translateY(-4px) scale(1.04);
+  background: rgba(0,0,0,0.6);
+}
+.nav-icon {
+  width: 56px;
+  height: 56px;
+  animation: spinY 12s linear infinite;
+}
+.nav-item .overlay {
+
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  color: #0f0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Keyframes */
+@keyframes spinY {
+  to { transform: rotateY(360deg); }
+}
+@keyframes spin {
+  to { transform:rotateY(360deg); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero {
+    margin-bottom: 2rem;
+  }
+  .home-title {
+    width: 70vw;
+  }
+  .main-nav {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .nav-item {
+    width: 80%;
+    height: 160px;
+  }
+  .header {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  .cart-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

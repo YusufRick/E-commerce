@@ -1,10 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 export default function AboutUs() {
+    const navigate = useNavigate();
   return (
     <div className="about-page">
+    <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
       <motion.section
         className="hero-section"
         initial={{ opacity: 0 }}
