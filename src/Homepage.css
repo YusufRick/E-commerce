@@ -9,7 +9,7 @@
   padding: 2rem 1rem;
   background: transparent;
   color: #fff;
-  overflow-y:hidden;
+  overflow-y:scroll;
   position: relative; /* for absolute children */
 }
 
