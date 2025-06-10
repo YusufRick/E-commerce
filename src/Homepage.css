@@ -43,12 +43,18 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex: none !important;
+  height: auto !important;
+  padding: 1rem 0;
   
 }
 .home-title {
-  width: 300px;      /* increase size */
+  width: 60vw;       /* increase size */
   max-width: 80vw;   /* stay responsive */
   height: auto;
+  margin: 0 auto;
+  display: block;
+  
 }
 
 /* Nav grid below logo */

@@ -131,14 +131,7 @@ html, body, #root {
   transform: scale(1.03); opacity: 0.9;
 }
 
-/* Hero + Nav */
-.hero {
-  display: flex; flex-direction: column;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: flex-start;
-  padding-top: 3rem;  
-}
+
 .main-nav {
   // display: flex;
   // flex-wrap: wrap;
@@ -219,11 +212,6 @@ html, body, #root {
   position: relative;
 }
 
-.home-title{
-  width: 50%;
-  height: 75%;
-
-}
 
 /* ——— card-style nav container ——— */
 .main-nav {
@@ -392,7 +380,7 @@ html, body, #root {
 }
 /* size the imported PNG */
 .cart-btn .cart-icon {
-  width: 50%;   /* adjust as needed */
+  width: 75%;   /* adjust as needed */
   height: 50%;
   animation: spin 20s linear infinite;
   transform-origin: center center;
