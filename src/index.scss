@@ -60,7 +60,6 @@ html, body, #root {
   align-items:first baseline;
   height: 200px;
   animation: blinker 2s linear infinite;
-  margin-top: -10rem;
 
 
 }
@@ -82,16 +81,9 @@ html, body, #root {
 
 /* Header + Cart Button */
 .header {
-  display: flex; justify-content: flex-end; padding: 1rem;
+  display: flex; justify-content: flex-end;
 }
-.cart-btn {
-  background: none; border: none; 
-  font-size: 1.5rem;
-  color: #fff; cursor: pointer;
-  transition: transform .3s, opacity .3s;
-  width: 25%;
-  height: 75%;
-}
+
 .start-btn{
   background: none; border: none; font-size: 1.5rem;
   color: #fff; cursor: pointer;
@@ -208,7 +200,7 @@ html, body, #root {
 .site-title {
   font-size: 4rem;
   width: 50%;
-  height: 100%;
+  height: auto;
   position: relative;
 }
 
@@ -366,25 +358,16 @@ html, body, #root {
   margin: auto;
 }
 
-//cart icon
+.card{
 
-.cart-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  margin: auto;
 }
+
 
 @keyframes spin {
   to { transform:rotateY(360deg); }
 }
-/* size the imported PNG */
-.cart-btn .cart-icon {
-  width: 75%;   /* adjust as needed */
-  height: 50%;
-  animation: spin 20s linear infinite;
-  transform-origin: center center;
-}
+
 
 //landing page
 

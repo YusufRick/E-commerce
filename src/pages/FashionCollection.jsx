@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
+import '../Collection.css';
 
 const items = [1, 2, 3, 4].map((i) => ({
   id: i,
@@ -18,7 +19,7 @@ export default function FashionCollection() {
   const [cartOpen, setCartOpen] = useState(false);
 
   return (
-    <div className="card">
+    <div className="collection-page">
       {/* Back button */}
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back

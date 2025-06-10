@@ -21,11 +21,12 @@
   z-index: 10;
 }
 .cart-btn {
-  background: none;
+  width: 25%;
+  height: auto;
   border: none;
+  background: transparent;
   cursor: pointer;
-  padding: 0;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: background 0.2s, color 0.2s;
 }
 .cart-btn:hover {
   transform: scale(1.1);
@@ -67,6 +68,7 @@
   width: 100%;
   max-width: 800px;
   margin-top: 2rem;  /* spacing under logo */
+  align-items: center;
 }
 
 /* Individual card */
@@ -134,12 +136,12 @@
     width: 80%;
     height: 160px;
   }
-  .header {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
   .cart-icon {
     width: 32px;
     height: 32px;
   }
+}
+
+.header {
+  display: flex; justify-content: flex-end; padding: 1rem;
 }
