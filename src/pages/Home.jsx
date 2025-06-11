@@ -8,7 +8,7 @@ import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/camera-icon.png';
 import Media from '../assets/media-icon.png';
 import bgAudioFile from '../assets/CHRYSALIS_WEBSITE.mp3';
-import style from '../Homepage.css';
+import '../Homepage.css';
 
 export default function HomePage({ go }) {
   const [cartOpen, setCartOpen] = useState(false);

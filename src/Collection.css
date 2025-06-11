@@ -1,3 +1,5 @@
+
+
 /* Container for all cards */
 .collection-page {
   position: relative;
@@ -26,8 +28,11 @@
 .Tittle {
   text-align: center;
   font-size: 2.5rem;
-  margin: 0 auto 2rem;
+  width: 60vw;       /* increase size */
+  max-width: 80vw; 
   justify-content: center;
+  margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
 .grid {
