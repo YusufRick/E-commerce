@@ -1,24 +1,24 @@
-// src/pages/Projects.jsx
+// src/pages/FashionCollection.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
-import products from '../pages/viewVisual'
+import '../Visual.css';
 
 const items = [1, 2, 3, 4].map((i) => ({
   id: i,
   name: `Visual ${i}`,
-  description: `bla bla bla`,
-  image: `/src/assets/projects-${i}.jpg`,
+  description: `$${i * 50 + 50}`,
+  image: `/src/assets/visual-${i}.jpg`,
 }));
 
-export default function Visual() {
+export default function VISUAL() {
   const navigate = useNavigate();
   const [cartOpen, setCartOpen] = useState(false);
 
   return (
-    <div className="card">
+    <div className="collection-page">
       {/* Back button */}
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back
@@ -38,7 +38,7 @@ export default function Visual() {
         </button>
       </header>
 
-      <h2 className="Tittle">VISUALS</h2>
+      <h2 className="Tittle">VISUAL</h2>
 
       <div className="grid">
         {items.map((item) => (
@@ -50,7 +50,8 @@ export default function Visual() {
               onClick={() => navigate(`/view_visual/${item.id}`)}
             />
             <p>{item.name}</p>
-            
+            <p className="description">{item.desription}</p>
+
           </div>
         ))}
       </div>

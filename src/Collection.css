@@ -31,7 +31,7 @@
   width: 60vw;       /* increase size */
   max-width: 80vw; 
   justify-content: center;
-  margin: 0 auto;
+  margin: 4rem auto;
   padding-bottom: 2rem;
 }
 
@@ -146,8 +146,8 @@ html, body, #root {
 }
 
 .cart-icon {
-  width: 50%;
-  height: 75%;
+  width: 75%;
+  height: auto;
   animation: spin 20s linear infinite;
   transform-origin: center center;
 }

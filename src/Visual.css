@@ -1,0 +1,157 @@
+
+
+/* Container for all cards */
+.collection-page {
+  position: relative;
+  /* give space for your Back + Cart buttons */
+  
+  padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+  background: transparent;
+  color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/*Title*/
+.Tittle {
+  text-align: center;
+  font-size: 2.5rem;
+  width: 60vw;       /* increase size */
+  max-width: 80vw; 
+  justify-content: center;
+  margin: 4rem auto;
+  padding-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Individual card */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+.item p {
+  margin: 0.5rem 1rem;
+}
+.price {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+/* Card image: fill the top of the card, maintain aspect ratio */
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Card body (title, price, button) */
+.card-body {
+  padding: 0.75rem;
+  flex: 1;                /* push footer/button to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* “Add to Cart” button full width */
+
+.cart-btn {
+  width: 20%;
+  height: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cart-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Make sure the page itself can scroll on mobile */
+html, body, #root {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+/* Mobile-specific tweaks */
+@media (max-width: 600px) {
+  .collection-page {
+    /* one card per row */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero {
+    margin-bottom: 2rem;
+  }
+  .home-title {
+    width: 70vw;
+  }
+  .main-nav {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .nav-item {
+    width: 80%;
+    height: 160px;
+  }
+  .cart-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.cart-icon {
+  width: 75%;
+  height: auto;
+  animation: spin 20s linear infinite;
+  transform-origin: center center;
+}
+.cart-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
