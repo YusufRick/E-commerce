@@ -56,7 +56,17 @@
   height: auto;
   margin: 0 auto;
   display: block;
+  animation: flicker .1s infinite;
   
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+  }
 }
 
 /* Nav grid below logo */

@@ -9,6 +9,7 @@ import '../Collection.css';
 const items = [1, 2, 3, 4].map((i) => ({
   id: i,
   name: `Fashion ${i}`,
+  descripiton:'',
   price: `$${i * 50 + 50}`,
   image: `/src/assets/fashion-${i}.jpg`,
 }));
