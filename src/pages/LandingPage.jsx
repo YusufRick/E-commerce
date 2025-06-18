@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import StartIcon from '../assets/start.png';
+import StartIcon from '../assets/enter.png';
 import TitleLogo from '../assets/kasahara-logo.png'; 
 
 export default function LandingPage({ go }) {
