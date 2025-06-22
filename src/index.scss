@@ -81,6 +81,11 @@ html, body, #root {
   transition: transform .3s, opacity .3s;
 
 }
+
+.style{
+
+  animation: 3.4s linear turn-on-safari;
+}
 .cart-btn:hover {
   transform: scale(1.1); opacity: 0.8;
 }
@@ -648,3 +653,6 @@ html, body, #root {
 
 
 
+.grid .item:hover {
+transform: translateY(-5px) scale(1.02);
+}
