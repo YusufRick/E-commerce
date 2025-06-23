@@ -7,8 +7,8 @@ export default function Cart({ isOpen, onClose }) {
   // ← move the checkout handler here
   const handleBuy = () => {
     window.open(
-      'https://buy.stripe.com/fZu28r6e27Cx0KHbll00',
-      '_blank'
+      'https://buy.stripe.com/fZu28r6e27Cx3Yc0KHbII00',
+      
     );
   };
 
