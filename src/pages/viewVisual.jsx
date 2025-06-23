@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import visual1 from '../assets/visual1.png';
+import visual2 from '../assets/visual2.gif';
+import visual3 from '../assets/visual3.png';
 
-const visuals = {
-  1: { id:1, name:'V1', description:'bla bla bla', image:'/src/assets/fashion-1.jpg', available: true},
-  2: { id:2, name:'V2', description:'bla bla bla', image:'/src/assets/fashion-2.jpg', available: true },
-  3: { id:3, name:'V3', description:'blu blu ble', image:'/src/assets/fashion-3.jpg', available: true },
-  4: { id:4, name:'V4', description:'blueekk', image:'/src/assets/fashion-4.jpg', available: true }
-};
+const visuals = [
+  { id: 1, name: 'Visual 1', description: '', image: visual1 },
+  { id: 2, name: 'Visual 2', description: '', image: visual2 },
+  { id: 3, name: 'Visual 3', description: '', image: visual3 },
+
+];
 
 export default function ViewVisual() {
   const { id } = useParams();
