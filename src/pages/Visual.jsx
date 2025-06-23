@@ -1,17 +1,22 @@
 // src/pages/FashionCollection.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { CartContext } from '../context/CartContext';
 import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
+import visual1 from '../assets/visual1.png';
+import visual2 from '../assets/visual2.png';
+import visual3 from '../assets/visual3.png';
+import visual4 from '../assets/visual4.png';
 import '../Visual.css';
 
-const items = [1, 2, 3, 4].map((i) => ({
-  id: i,
-  name: `Visual ${i}`,
-  description: `$${i * 50 + 50}`,
-  image: `/src/assets/visual1.png`,
-}));
+const items = [
+  { id: 1, name: 'Visual 1', description: '$100', image: visual1 },
+  { id: 2, name: 'Visual 2', description: '$150', image: visual2 },
+  { id: 3, name: 'Visual 3', description: '$200', image: visual3 },
+  { id: 4, name: 'Visual 4', description: '$250', image: visual4 },
+];
 
 export default function VISUAL() {
   const navigate = useNavigate();
@@ -50,7 +55,7 @@ export default function VISUAL() {
               onClick={() => navigate(`/view_visual/${item.id}`)}
             />
             <p>{item.name}</p>
-            <p className="description">{item.desription}</p>
+            <p className="description">{item.description}</p>
 
           </div>
         ))}
