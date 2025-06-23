@@ -10,7 +10,7 @@ const items = [1, 2, 3, 4].map((i) => ({
   id: i,
   name: `Visual ${i}`,
   description: `$${i * 50 + 50}`,
-  image: `/src/assets/visual1.png`,
+  image: `/src/assets/visual${i}.png`,
 }));
 
 export default function VISUAL() {
