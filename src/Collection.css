@@ -63,7 +63,7 @@
 }
 .item img {
   width: 100%;
-  height: auto;
+  height: 215px;
   object-fit: cover;
   cursor: pointer;
 }

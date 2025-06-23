@@ -9,7 +9,6 @@ import visual1 from '../assets/visual1.png';
 import visual2 from '../assets/visual2.gif';
 import visual3 from '../assets/visual3.png';
 import visual4 from '../assets/visual4.gif';
-
 import '../Visual.css';
 
 const items = [
