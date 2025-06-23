@@ -6,16 +6,16 @@ import { CartContext } from '../context/CartContext';
 import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
 import visual1 from '../assets/visual1.png';
-import visual2 from '../assets/visual2.png';
+import visual2 from '../assets/visual2.gif';
 import visual3 from '../assets/visual3.png';
-import visual4 from '../assets/visual4.png';
+
 import '../Visual.css';
 
 const items = [
-  { id: 1, name: 'Visual 1', description: '$100', image: visual1 },
-  { id: 2, name: 'Visual 2', description: '$150', image: visual2 },
-  { id: 3, name: 'Visual 3', description: '$200', image: visual3 },
-  { id: 4, name: 'Visual 4', description: '$250', image: visual4 },
+  { id: 1, name: 'Visual 1', description: '', image: visual1 },
+  { id: 2, name: 'Visual 2', description: '', image: visual2 },
+  { id: 3, name: 'Visual 3', description: '', image: visual3 },
+
 ];
 
 export default function VISUAL() {

@@ -6,13 +6,12 @@ import CartIcon from '../assets/cart_icon.png';
 import Cart from '../components/Cart';
 import '../Collection.css';
 
-const items = [1, 2, 3, 4].map((i) => ({
-  id: i,
-  name: `Fashion ${i}`,
-  descripiton:'',
-  price: `$${i * 50 + 50}`,
-  image: `/src/assets/fashion-${i}.jpg`,
-}));
+const items = [
+  { id: 1, name: 'Tee 1', price: '', image:  ""},
+  { id: 2, name: 'Tee 2', price: '', image: "" },
+  { id: 3, name: 'Tee 3', price: '', image: "" },
+
+];
 
 export default function FashionCollection() {
   const navigate = useNavigate();
