@@ -15,7 +15,7 @@ const items = [
   { id: 1, name: 'Visual 1', description: '', image: visual1 },
   { id: 2, name: 'Visual 2', description: '', image: visual2 },
   { id: 3, name: 'Visual 3', description: '', image: visual3 },
-  { id: 3, name: 'Visual 4', description: '', image: visual4 },
+  { id: 4, name: 'Visual 4', description: '', image: visual4 },
 
 ];
 
