@@ -2,7 +2,6 @@ import React, { useState,useRef,useEffect, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import NoiseOverlay   from './components/NoiseOverlay';
 import Router         from './router';
 import bgAudioFile from './assets/CHRYSALIS_WEBSITE.mp3';
 
@@ -58,7 +57,6 @@ export default function App() {
         style={{ display: 'none' }}
       />
       
-      <NoiseOverlay />
 
       {/* Wipe‐out overlay */}
       <AnimatePresence>
