@@ -5,12 +5,27 @@ import { CartContext } from '../context/CartContext';
 export default function Cart({ isOpen, onClose }) {
   const { cartItems, removeFromCart, cartTotal } = useContext(CartContext);
 
-  const handleBuy = () => {
-    window.open(
-      'https://buy.stripe.com/fZu28r6e27Cx3Yc0KHbII00',
-      '_blank'
-    );
-  };
+  const handleBuy = async () => {
+  try {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ cartItems }),
+    });
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url; // redirect to Stripe checkout
+    } else {
+      console.error('Checkout URL not found:', data);
+    }
+  } catch (error) {
+    console.error('Error creating checkout session:', error);
+  }
+};
+
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
