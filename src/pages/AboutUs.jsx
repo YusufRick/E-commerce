@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import logo from 'src/assets/kasahara-logo.png'; // Make sure this matches your actual logo filename and path
+import logo from '../assets/kasahara-logo.png'; // Make sure this matches your actual logo filename and path
 
 export default function AboutUs() {
   const navigate = useNavigate();
