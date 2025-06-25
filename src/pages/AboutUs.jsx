@@ -1,60 +1,71 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useParams, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/kasahara-logo.png'; // Make sure this matches your actual logo filename and path
 
 export default function AboutUs() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div className="about-page">
-    <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
+      <style>{`
+        .about-page {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 4rem 2rem;
+          background-color: white;
+          color: black;
+          text-align: center;
+          font-family: 'TT Commons', sans-serif;
+        }
+
+        .back-btn {
+          position: absolute;
+          top: 2rem;
+          left: 2rem;
+          background: none;
+          border: none;
+          font-size: 1rem;
+          cursor: pointer;
+          color: black;
+        }
+
+        .brand-logo {
+          width: 140px;
+          height: auto;
+          margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+          color: #333;
+          max-width: 600px;
+        }
+      `}</style>
+
+      <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
+
       <motion.section
         className="hero-section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <motion.h1
-          className="hero-title"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          ABOUT US
-        </motion.h1>
+        <img src={logo} alt="Brand Logo" style={{ width: '150px', border: '1px solid red' }} />
+
         <motion.p
           className="hero-subtitle"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Kasahara is a concept-first clothing label built on contrast. Every piece started with a question
-          , not a trend. Its a story, not just fashion, often mixing opposing elements. Softness and sharp edges
-            or structure and emotion. As for the rest, we leave it for you to interpret. We make collection 
-            for people who find meaning in details. Look closer.
+          Connecting, Collaborating & Celebrating Creatives
         </motion.p>
-      </motion.section>
-
-      <motion.section
-        className="content-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-      >
-        <h2 className="section-title">Our Mission</h2>
-        <p className="section-text">
-          Telling stories and express creativity. Creating instead of consuming. We don't follow the market, We follow the message
-        </p>
-
-        <h2 className="section-title">The Collective</h2>
-        <ul className="team-list">
-          <li>Director: </li>
-          <li>Creative Director: </li>
-          <li>Visual Artist: </li>
-          <li>Production:</li>
-          <li>Inspired by: GOD</li>
-        </ul>
       </motion.section>
     </div>
   );
 }
+
