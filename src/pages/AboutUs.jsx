@@ -54,14 +54,7 @@ export default function AboutUs() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <motion.img
-          src={logo}
-          alt="Brand Logo"
-          className="brand-logo"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        />
+        <img src={logo} alt="Brand Logo" style={{ width: '150px', border: '1px solid red' }} />
 
         <motion.p
           className="hero-subtitle"
