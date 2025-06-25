@@ -114,6 +114,7 @@ html, body, #root {
   width: 100%; padding: .75rem; background: #fff;
   color: #000; border: none; cursor: pointer;
   transition: transform .3s, opacity .3s;
+  font-size: medium;
 }
 .checkout-btn:hover {
   transform: scale(1.03); opacity: 0.9;
@@ -665,6 +666,7 @@ transform: translateY(-5px) scale(1.02);
   position: relative;
   display: inline-block;
   font-family: 'Courier New', Courier, monospace;
+  align-content: center;
 }
 
 /* Hide the native arrow in IE/Edge */
@@ -680,14 +682,14 @@ transform: translateY(-5px) scale(1.02);
   appearance: none;
 
   /* sizing & spacing */
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  padding: 5px;
   font-size: 1rem;
   line-height: 1.4;
+  width: 100%;
 
   /* neon styling */
   background: rgba(0,0,0,0.8);
   color: white;
-  border: 2px solid white;
   border-radius: 4px;
   text-shadow: 0 0 4px rgba(0,255,0,0.7);
 
@@ -698,19 +700,7 @@ transform: translateY(-5px) scale(1.02);
   outline: none;
 }
 
-/* The dropdown arrow (▾) */
-.size-dropdown-wrapper::after {
-  content: '▾';
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: white;
-  font-size: 1.25rem;
-  text-shadow: 0 0 4px rgba(0,255,0,0.7);
-  z-index: 2;
-}
+
 
 /* Style the options themselves */
 .size-dropdown-wrapper .size-dropdown option {

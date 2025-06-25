@@ -6,35 +6,35 @@ import { app }                               from '../firebase';
 import { CartContext }                       from '../context/CartContext';
 import Cart                                  from '../components/Cart';
 import CartIcon                              from '../assets/cart_icon.png';
+import "../ProductPage.css";
 
-// 👇 local imports of your three tee images
 import fashion1Img from '../assets/visual1.png';
+// …import any other local images here…
 
+import '../Collection.css'; // reuse your existing styles
 
-
-import '../Collection.css'; // re-use your existing styles
-
-// map the `image` field in Firestore → your imported asset
 const LOCAL_IMAGES = {
   'fashion-1.jpg': fashion1Img,
+  // …map other filenames…
 };
 
 export default function ProductPage() {
   const { id }             = useParams();
   const navigate           = useNavigate();
   const { addToCart }      = useContext(CartContext);
-  const [cartOpen, setCartOpen]       = useState(false);
-  const [item, setItem]               = useState(null);
-  const [error, setError]= useState('');
-  const [chosenSize, setChosenSize]   = useState('');
 
+  const [cartOpen, setCartOpen]     = useState(false);
+  const [item, setItem]             = useState(null);
+  const [error, setError]           = useState('');
+  const [chosenSize, setChosenSize] = useState('');
+
+  // Load the product data
   useEffect(() => {
-    // load the product doc from Firestore:
     const db = getFirestore(app);
     getDoc(doc(db, 'Collection', id))
-      .then((snap) => {
+      .then(snap => {
         if (!snap.exists()) {
-          console.warn(`No product found with id=${id}`);
+          setError(`No product found with id="${id}"`);
           return;
         }
         const data = snap.data();
@@ -44,16 +44,30 @@ export default function ProductPage() {
           description: data.description,
           price:       data.price,
           sizes:       Array.isArray(data.sizes) ? data.sizes : ['S','M','L'],
-          image:       LOCAL_IMAGES[data.image] || Object.values(LOCAL_IMAGES)[0],
+          image:       LOCAL_IMAGES[data.image] || fashion1Img,
         });
       })
-      .catch((err) => {
-        console.error('Error fetching product:', err);
+      .catch(err => {
+        console.error(err);
+        setError('Failed to load product.');
       });
   }, [id]);
 
-  if (error) return <div style={{ padding: '2rem', color: 'tomato' }}>🚨 {error}</div>;
-  if (!item)  return <div className="loader">Loading…</div>;
+  if (error) {
+    return <div style={{ padding: '2rem', color: 'tomato' }}>🚨 {error}</div>;
+  }
+  if (!item) {
+    return <div className="loader">Loading…</div>;
+  }
+
+  // Safe add-to-cart
+  const handleAddToCart = () => {
+    if (!chosenSize) {
+      alert('Please select a size before adding to cart.');
+      return;
+    }
+    addToCart({ ...item, size: chosenSize });
+  };
 
   return (
     <div className="collection-page">
@@ -86,33 +100,30 @@ export default function ProductPage() {
         {/* Right: info column */}
         <div className="info">
           <p className="description">{item.description}</p>
-          <p className="price">${item.price}</p>
+          <p className="price">Price: ${item.price}</p>
 
-          <div className='size-dropdown-wrapper'>
-          <select className="size-dropdown"
-            value={chosenSize}
-            onChange={(e) => setChosenSize(e.target.value)}
-          >
-            <option value="" disabled>
-            Size
-            </option>
-            {item.sizes.map((sz) => (
-              <option key={sz} value={sz}>
-                {sz}
+          {/* Size dropdown */}
+          <div className="size-dropdown-wrapper">
+            <select
+              className="size-dropdown"
+              value={chosenSize}
+              onChange={e => setChosenSize(e.target.value)}
+            >
+              <option value="" disabled>
+                Size
               </option>
-            ))}
-          </select>
+              {item.sizes.map((sz) => (
+                <option key={sz} value={sz}>
+                  {sz}
+                </option>
+              ))}
+            </select>
           </div>
 
+          {/* Add to Cart */}
           <button
             className="add-cart-btn"
-            onClick={() =>
-              addToCart({
-                ...item,
-                size: chosenSize,
-              })
-            }
-            disabled={!chosenSize}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </button>
