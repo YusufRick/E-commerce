@@ -656,3 +656,65 @@ html, body, #root {
 .grid .item:hover {
 transform: translateY(-5px) scale(1.02);
 }
+
+
+//size dropdown menu style
+
+/* Wrap your <select> in a div.size-dropdown-wrapper */
+.size-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Hide the native arrow in IE/Edge */
+.size-dropdown-wrapper select::-ms-expand {
+  display: none;
+}
+
+/* The select itself */
+.size-dropdown-wrapper .size-dropdown {
+  /* remove default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* sizing & spacing */
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.4;
+
+  /* neon styling */
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  text-shadow: 0 0 4px rgba(0,255,0,0.7);
+
+  /* ensure overlay arrow shows */
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The dropdown arrow (▾) */
+.size-dropdown-wrapper::after {
+  content: '▾';
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: white;
+  font-size: 1.25rem;
+  text-shadow: 0 0 4px rgba(0,255,0,0.7);
+  z-index: 2;
+}
+
+/* Style the options themselves */
+.size-dropdown-wrapper .size-dropdown option {
+  background: #000;
+  color: white;
+  padding: 0.5rem;
+}
