@@ -1,31 +1,35 @@
-// src/components/Cart.jsx
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
 export default function Cart({ isOpen, onClose }) {
   const { cartItems, removeFromCart, cartTotal } = useContext(CartContext);
+  const [loading, setLoading] = useState(false);
 
   const handleBuy = async () => {
-  try {
-    const response = await fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ cartItems }),
-    });
+    if (!cartItems.length) return;
+    setLoading(true);
 
-    const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url; // redirect to Stripe checkout
-    } else {
-      console.error('Checkout URL not found:', data);
+    // Build the array that your API expects:
+    const items = cartItems.map((item) => ({
+      price: item.priceId,           // <-- your Stripe Price ID field
+      quantity: item.quantity,
+    }));
+
+    try {
+      const res = await fetch('/api/create-checkout-session', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ items }),
+      });
+      const { url, error } = await res.json();
+      if (error) throw new Error(error);
+      window.location.href = url;
+    } catch (err) {
+      console.error('Error creating checkout session:', err);
+      alert('Checkout failed. Please try again.');
+      setLoading(false);
     }
-  } catch (error) {
-    console.error('Error creating checkout session:', error);
-  }
-};
-
+  };
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -44,16 +48,12 @@ export default function Cart({ isOpen, onClose }) {
                 <img src={item.image} alt={item.name} loading="lazy" />
                 <div className="cart-item-info">
                   <p className="cart-item-name">{item.name}</p>
-                  {item.size && (
-                    <p className="cart-item-size">Size: {item.size}</p>
-                  )}
-                  <p className="cart-item-quantity">
-                    Qty: {item.quantity}
-                  </p>
-                  <p className="cart-item-price">Price: {item.price}</p>
+                  {item.size && <p className="cart-item-size">Size: {item.size}</p>}
+                  <p className="cart-item-quantity">Qty: {item.quantity}</p>
+                  <p className="cart-item-price">${item.price}</p>
                   <button
                     className="cart-remove-btn"
-                    onClick={() => removeFromCart(item)}
+                    onClick={() => removeFromCart(item.id, item.size)}
                   >
                     Remove
                   </button>
@@ -63,8 +63,7 @@ export default function Cart({ isOpen, onClose }) {
           </ul>
 
           <div className="cart-total">
-            <span>Total:</span>
-            <span>${cartTotal.toFixed(2)}</span>
+            <strong>Total:</strong> ${cartTotal.toFixed(2)}
           </div>
         </>
       )}
@@ -72,9 +71,9 @@ export default function Cart({ isOpen, onClose }) {
       <button
         className="checkout-btn"
         onClick={handleBuy}
-        disabled={cartItems.length === 0}
+        disabled={loading || cartItems.length === 0}
       >
-        Checkout
+        {loading ? 'Redirecting…' : 'Checkout'}
       </button>
     </div>
   );

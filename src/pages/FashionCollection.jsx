@@ -33,6 +33,7 @@ export default function FashionCollection() {
             name:        data.name,
             description: data.description,
             price:       data.price,
+            priceId:  data.priceId,
             sizes:       data.sizes ?? (data.size ? [data.size] : []),
             image:       LOCAL_IMAGES[data.image] || LOCAL_IMAGES["image1.png"],
           };

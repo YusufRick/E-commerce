@@ -1,9 +1,15 @@
 import React, { useState,useRef,useEffect, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements }   from '@stripe/react-stripe-js';
 
 import Router         from './router';
 import bgAudioFile from './assets/CHRYSALIS_WEBSITE.mp3';
+
+const stripePromise = loadStripe(
+  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
+);
 
 export default function App() {
   const location = useLocation();

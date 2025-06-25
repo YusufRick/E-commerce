@@ -43,6 +43,7 @@ export default function ProductPage() {
           name:        data.name,
           description: data.description,
           price:       data.price,
+          priceId:  data.priceId,
           sizes:       Array.isArray(data.sizes) ? data.sizes : ['S','M','L'],
           image:       LOCAL_IMAGES[data.image] || fashion1Img,
         });
