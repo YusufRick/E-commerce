@@ -29,7 +29,8 @@ export default async function handler(req, res) {
       cancel_url:  `${req.headers.origin}/cart`,
     });
     return res.status(200).json({ url: session.url });
-  } catch (err) {
+  }
+   catch (err) {
     console.error('Stripe session creation error:', err);
     return res.status(500).json({ error: 'Stripe session creation failed' });
   }

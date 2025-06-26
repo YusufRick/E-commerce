@@ -87,6 +87,8 @@ export default function App() {
 
       {/* Your actual routes fade in/out */}
       <div style={{ pointerEvents: isWiping ? 'none' : 'auto' }}>
+
+        <Elements stripe={stripePromise}>
         <AnimatePresence exitBeforeEnter>
           <motion.div
             key={location.pathname}
@@ -101,6 +103,7 @@ export default function App() {
             </Suspense>
           </motion.div>
         </AnimatePresence>
+        </Elements>
         
         
         

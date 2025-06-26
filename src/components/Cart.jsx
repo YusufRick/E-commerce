@@ -9,21 +9,25 @@ export default function Cart({ isOpen, onClose }) {
     if (!cartItems.length) return;
     setLoading(true);
 
-    // Build the array that your API expects:
-    const items = cartItems.map((item) => ({
-      price: item.priceId,           // <-- your Stripe Price ID field
-      quantity: item.quantity,
+    // map your cartItems into the shape the server expects:
+    const items = cartItems.map(item => ({
+      name:     item.name,
+      price:    item.price,      // numeric, e.g. 89.00
+      quantity: item.quantity || 1
     }));
+
+    console.log('👉 sending to /api:', items);
 
     try {
       const res = await fetch('/api/create-checkout-session', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ items }),
+        body:    JSON.stringify({ items })
       });
+      
       const { url, error } = await res.json();
       if (error) throw new Error(error);
-      window.location.href = url;
+      window.location.href = json.url;
     } catch (err) {
       console.error('Error creating checkout session:', err);
       alert('Checkout failed. Please try again.');
@@ -31,42 +35,37 @@ export default function Cart({ isOpen, onClose }) {
     }
   };
 
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantity = cartItems.reduce((sum, item) => sum + (item.quantity||1), 0);
 
   return (
     <div className={`cart-sidebar ${isOpen ? 'open' : ''}`}>
       <button className="close-btn" onClick={onClose}>×</button>
       <h2>Your Cart ({totalQuantity})</h2>
 
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <>
-          <ul className="cart-list">
-            {cartItems.map((item, idx) => (
-              <li key={`${item.id}-${item.size}-${idx}`}>
-                <img src={item.image} alt={item.name} loading="lazy" />
-                <div className="cart-item-info">
-                  <p className="cart-item-name">{item.name}</p>
-                  {item.size && <p className="cart-item-size">Size: {item.size}</p>}
-                  <p className="cart-item-quantity">Qty: {item.quantity}</p>
-                  <p className="cart-item-price">${item.price}</p>
-                  <button
-                    className="cart-remove-btn"
-                    onClick={() => removeFromCart(item.id, item.size)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="cart-total">
-            <strong>Total:</strong> ${cartTotal.toFixed(2)}
-          </div>
-        </>
-      )}
+      {cartItems.length === 0
+        ? <p>Your cart is empty.</p>
+        : (
+          <>
+            <ul className="cart-list">
+              {cartItems.map((item, idx) => (
+                <li key={`${item.id}-${item.size}-${idx}`}>
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                  <div className="cart-item-info">
+                    <p>{item.name}</p>
+                    {item.size && <p>Size: {item.size}</p>}
+                    <p>Qty: {item.quantity || 1}</p>
+                    <p>Price: ${item.price.toFixed(2)}</p>
+                    <button onClick={() => removeFromCart(item)}>Remove</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="cart-total">
+              <strong>Total:</strong> ${cartTotal.toFixed(2)}
+            </div>
+          </>
+        )
+      }
 
       <button
         className="checkout-btn"
