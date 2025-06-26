@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2022-11-15'
 });
+console.log('👉 stripe:', stripe);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

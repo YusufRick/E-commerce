@@ -9,11 +9,11 @@ export default function Cart({ isOpen, onClose }) {
     if (!cartItems.length) return;
     setLoading(true);
 
-    // map your cartItems into the shape the server expects:
-    const items = cartItems.map(item => ({
-      name:     item.name,
-      price:    item.price,      // numeric, e.g. 89.00
-      quantity: item.quantity || 1
+    // shape your items for the server:
+    const items = cartItems.map(i => ({
+      name:     i.name,
+      price:    i.price,       // e.g. 89.00
+      quantity: i.quantity || 1
     }));
 
     console.log('👉 sending to /api:', items);
@@ -22,14 +22,16 @@ export default function Cart({ isOpen, onClose }) {
       const res = await fetch('/api/create-checkout-session', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ items })
+        body:    JSON.stringify({ items }),
       });
-      
+
       const { url, error } = await res.json();
       if (error) throw new Error(error);
-      window.location.href = json.url;
+
+      // redirect to Stripe
+      window.location.href = url;
     } catch (err) {
-      console.error('Error creating checkout session:', err);
+      console.error('❌ Error creating checkout session:', err);
       alert('Checkout failed. Please try again.');
       setLoading(false);
     }
