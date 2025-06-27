@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/kasahara-logo.png'; // Make sure this matches your actual logo filename and path
+import logo from '../assets/kasahara-logo.png'; // Ensure this path is correct
 
 export default function AboutUs() {
   const navigate = useNavigate();
@@ -14,12 +14,11 @@ export default function AboutUs() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          padding: 4rem 2rem;
-          background-color: white;
-          color: black;
-          text-align: center;
+          padding: 2rem;
+          background-color: black;
+          color: white;
           font-family: 'TT Commons', sans-serif;
+          position: relative;
         }
 
         .back-btn {
@@ -30,19 +29,21 @@ export default function AboutUs() {
           border: none;
           font-size: 1rem;
           cursor: pointer;
-          color: black;
+          color: white;
         }
 
         .brand-logo {
-          width: 140px;
+          width: 160px;
           height: auto;
-          margin-bottom: 1.5rem;
+          margin-top: 2rem;
         }
 
-        .hero-subtitle {
+        .brand-description {
           font-size: 1.1rem;
-          color: #333;
+          color: #ccc;
+          margin-top: 1rem;
           max-width: 600px;
+          text-align: center;
         }
       `}</style>
 
@@ -54,18 +55,19 @@ export default function AboutUs() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <img src={logo} alt="Brand Logo" style={{ width: '150px', border: '1px solid red' }} />
+        <img src={logo} alt="Brand Logo" className="brand-logo" />
 
         <motion.p
-          className="hero-subtitle"
+          className="brand-description"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Connecting, Collaborating & Celebrating Creatives
+          Kasahara is a platform that connects, collaborates, and celebrates the creative community — empowering artists and visionaries through shared experience and inspiration.
         </motion.p>
       </motion.section>
     </div>
   );
 }
+
 
