@@ -8,9 +8,9 @@ import Cart from "../components/Cart";
 import CartIcon from "../assets/cart_icon.png";
 import "../Collection.css";
 
-import image1 from "../assets/visual1.png";
+import undefinedTee from "../assets/UNDEFINED-Tee.png";
 // …and any other local imports
-const LOCAL_IMAGES = { "image1.png": image1 /* … */ };
+const LOCAL_IMAGES = { "UNDEFINED-Tee.png": undefinedTee /* … */ };
 
 export default function FashionCollection() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function FashionCollection() {
             price:       data.price,
             priceId:  data.priceId,
             sizes:       data.sizes ?? (data.size ? [data.size] : []),
-            image:       LOCAL_IMAGES[data.image] || LOCAL_IMAGES["image1.png"],
+            image:       LOCAL_IMAGES[data.image] || LOCAL_IMAGES["UNDEFINED-Tee.png"],
           };
         });
         setItems(products);
