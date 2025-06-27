@@ -10,52 +10,69 @@ export default function AboutUs() {
   return (
     <div className="about-page">
       <style>{`
-        .about-page {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 2rem;
-          background-color: black;
-          color: white;
-          font-family: 'TT Commons', sans-serif;
-          position: relative;
-        }
+  .about-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: black;
+    color: white;
+    font-family: 'TT Commons', sans-serif;
+    position: relative;
+  }
 
-        .back-btn {
-          position: absolute;
-          top: 2rem;
-          left: 2rem;
-          background: none;
-          border: none;
-          font-size: 1rem;
-          cursor: pointer;
-          color: white;
-        }
+  .back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+  }
 
-        .brand-logo {
-          width: 640px;
-          height: auto;
-          margin-top: 2rem;
-        }
+  .brand-logo {
+    width: 60vw;
+    max-width: 640px;
+    height: auto;
+    margin-top: 2rem;
+  }
 
-        .brand-description {
-          font-size: 1.1rem;
-          color: #ccc;
-          margin-top: 1rem;
-          max-width: 600px;
-          text-align: center;
-          line-height: 1.6;
-        }
+  .brand-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 1rem;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 1rem;
+  }
 
-        .principles-image {
-          margin-top: 2rem;
-          width: 80%;
-          max-width: 600px;
-          height: auto;
-          border-radius: 8px;
-        }
-      `}</style>
+  .principles-image {
+    margin-top: 2rem;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .brand-logo {
+      width: 80vw;
+    }
+
+    .brand-description {
+      font-size: 1rem;
+    }
+
+    .principles-image {
+      width: 90%;
+    }
+  }
+`}</style>
+
 
       <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
 
