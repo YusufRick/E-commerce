@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/kasahara-logo.png'; // Make sure this matches your actual logo filename and path
+import logo from '../assets/kasahara-logo.png';
+import principles from '../assets/kasahara-principles.jpg'; // New image import
 
 export default function AboutUs() {
   const navigate = useNavigate();
@@ -9,42 +10,69 @@ export default function AboutUs() {
   return (
     <div className="about-page">
       <style>{`
-        .about-page {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 4rem 2rem;
-          background-color: white;
-          color: black;
-          text-align: center;
-          font-family: 'TT Commons', sans-serif;
-        }
+  .about-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: black;
+    color: white;
+    font-family: 'TT Commons', sans-serif;
+    position: relative;
+  }
 
-        .back-btn {
-          position: absolute;
-          top: 2rem;
-          left: 2rem;
-          background: none;
-          border: none;
-          font-size: 1rem;
-          cursor: pointer;
-          color: black;
-        }
+  .back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+  }
 
-        .brand-logo {
-          width: 140px;
-          height: auto;
-          margin-bottom: 1.5rem;
-        }
+  .brand-logo {
+    width: 60vw;
+    max-width: 640px;
+    height: auto;
+    margin-top: 2rem;
+  }
 
-        .hero-subtitle {
-          font-size: 1.1rem;
-          color: #333;
-          max-width: 600px;
-        }
-      `}</style>
+  .brand-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 1rem;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 1rem;
+  }
+
+  .principles-image {
+    margin-top: 2rem;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .brand-logo {
+      width: 80vw;
+    }
+
+    .brand-description {
+      font-size: 1rem;
+    }
+
+    .principles-image {
+      width: 90%;
+    }
+  }
+`}</style>
+
 
       <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
 
@@ -54,18 +82,31 @@ export default function AboutUs() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <img src={logo} alt="Brand Logo" style={{ width: '150px', border: '1px solid red' }} />
+        <img src={logo} alt="Brand Logo" className="brand-logo" />
 
         <motion.p
-          className="hero-subtitle"
+          className="brand-description"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Connecting, Collaborating & Celebrating Creatives
+          Philosophy : To Connect, Collaborate, and Celebrate Creatives. <br /><br />
+          Creativity is what keeps the mind young, drives innovation & inspires action. <br /><br />
+          Therefore, that's what we're pushing for.
         </motion.p>
+
+        <motion.img
+          src={principles}
+          alt="Kasahara Principles"
+          className="principles-image"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        />
       </motion.section>
     </div>
   );
 }
+
+
 
