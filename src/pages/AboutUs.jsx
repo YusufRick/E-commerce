@@ -33,7 +33,7 @@ export default function AboutUs() {
         }
 
         .brand-logo {
-          width: 160px;
+          width: 640px;
           height: auto;
           margin-top: 2rem;
         }
