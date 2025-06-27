@@ -8,7 +8,7 @@ import Cart                                  from '../components/Cart';
 import CartIcon                              from '../assets/cart_icon.png';
 import "../ProductPage.css";
 
-import fashion1Img from '../assets/visual1.png';
+import fashion1Img from '../assets/UNDEFINED-Tee.png';
 // …import any other local images here…
 
 import '../Collection.css'; // reuse your existing styles
