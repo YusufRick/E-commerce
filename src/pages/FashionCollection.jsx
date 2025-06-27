@@ -91,7 +91,7 @@ export default function FashionCollection() {
 
             <p className="name">{item.name}</p>
             <p className="description">{item.description}</p>
-            <p className="price">${item.price}</p>
+            <p className="price">RM{item.price}</p>
 
             {item.sizes.length > 0 && (
               <div className="size-dropdown-wrapper">
