@@ -63,7 +63,11 @@ export default function AboutUs() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Kasahara is a platform that connects, collaborates, and celebrates the creative community — empowering artists and visionaries through shared experience and inspiration.
+          Philosophy : To Connect, Collaborate, and Celebrate Creatives. 
+
+          Creativy is what keeps the mind young, drives innovation & inspire action.
+
+          Therefore, that's what we're pushing for.
         </motion.p>
       </motion.section>
     </div>
