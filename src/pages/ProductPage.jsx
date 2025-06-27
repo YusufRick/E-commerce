@@ -6,12 +6,10 @@ import { app }                               from '../firebase';
 import { CartContext }                       from '../context/CartContext';
 import Cart                                  from '../components/Cart';
 import CartIcon                              from '../assets/cart_icon.png';
+import fashion1Img                           from '../assets/UNDEFINED-Tee.png';
+import sizeChartImg                          from '../assets/sizechart.png'; // NEW import
 import "../ProductPage.css";
-
-import fashion1Img from '../assets/UNDEFINED-Tee.png';
-// …import any other local images here…
-
-import '../Collection.css'; // reuse your existing styles
+import '../Collection.css';
 
 const LOCAL_IMAGES = {
   'fashion-1.jpg': fashion1Img,
@@ -28,7 +26,6 @@ export default function ProductPage() {
   const [error, setError]           = useState('');
   const [chosenSize, setChosenSize] = useState('');
 
-  // Load the product data
   useEffect(() => {
     const db = getFirestore(app);
     getDoc(doc(db, 'Collection', id))
@@ -43,7 +40,7 @@ export default function ProductPage() {
           name:        data.name,
           description: data.description,
           price:       data.price,
-          priceId:  data.priceId,
+          priceId:     data.priceId,
           sizes:       Array.isArray(data.sizes) ? data.sizes : ['S','M','L'],
           image:       LOCAL_IMAGES[data.image] || fashion1Img,
         });
@@ -61,7 +58,6 @@ export default function ProductPage() {
     return <div className="loader">Loading…</div>;
   }
 
-  // Safe add-to-cart
   const handleAddToCart = () => {
     if (!chosenSize) {
       alert('Please select a size before adding to cart.');
@@ -72,15 +68,12 @@ export default function ProductPage() {
 
   return (
     <div className="collection-page">
-      {/* ← Back */}
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back
       </button>
 
-      {/* Cart sidebar */}
       <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
 
-      {/* Header + cart icon */}
       <header className="header">
         <button
           className="cart-btn"
@@ -91,45 +84,120 @@ export default function ProductPage() {
         </button>
       </header>
 
-      {/* Title */}
       <h2 className="Tittle">{item.name}</h2>
 
       <div className="product-details">
-        {/* Left: the image */}
-        <img src={item.image} alt={item.name} loading="lazy" />
+        <img src={item.image} alt={item.name} loading="lazy" className="product-image" />
 
-        {/* Right: info column */}
-        <div className="info">
-          <p className="description">{item.description}</p>
-          <p className="price">Price: ${item.price}</p>
+        <div className="info-and-chart">
+          <div className="info">
+            <p className="description">{item.description}</p>
+            <p className="price">Price: ${item.price}</p>
 
-          {/* Size dropdown */}
-          <div className="size-dropdown-wrapper">
-            <select
-              className="size-dropdown"
-              value={chosenSize}
-              onChange={e => setChosenSize(e.target.value)}
-            >
-              <option value="" disabled>
-                Size
-              </option>
-              {item.sizes.map((sz) => (
-                <option key={sz} value={sz}>
-                  {sz}
+            <div className="size-dropdown-wrapper">
+              <select
+                className="size-dropdown"
+                value={chosenSize}
+                onChange={e => setChosenSize(e.target.value)}
+              >
+                <option value="" disabled>
+                  Size
                 </option>
-              ))}
-            </select>
+                {item.sizes.map((sz) => (
+                  <option key={sz} value={sz}>
+                    {sz}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button className="add-cart-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
           </div>
 
-          {/* Add to Cart */}
-          <button
-            className="add-cart-btn"
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </button>
+          <img
+            src={sizeChartImg}
+            alt="Size Chart"
+            className="size-chart-img"
+            loading="lazy"
+          />
         </div>
       </div>
+
+      {/* Inline CSS styles */}
+      <style>{`
+        .product-details {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          margin-top: 2rem;
+          align-items: center;
+        }
+
+        .product-image {
+          width: 100%;
+          max-width: 400px;
+          object-fit: contain;
+        }
+
+        .info-and-chart {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
+          width: 100%;
+        }
+
+        .info {
+          max-width: 600px;
+          width: 100%;
+        }
+
+        .size-chart-img {
+          width: 100%;
+          max-width: 400px;
+          height: auto;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+        }
+
+        .size-dropdown-wrapper {
+          margin: 1rem 0;
+        }
+
+        .size-dropdown {
+          padding: 0.5rem;
+          font-size: 1rem;
+        }
+
+        .add-cart-btn {
+          padding: 0.75rem 1.5rem;
+          background-color: black;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+
+        @media screen and (min-width: 768px) {
+          .product-details {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+          }
+
+          .info-and-chart {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 2rem;
+          }
+
+          .size-chart-img {
+            margin-top: 1rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
