@@ -1,48 +1,49 @@
 // server.js
-require('dotenv').config();
-const express = require('express');
-const cors    = require('cors');
-const Stripe  = require('stripe');
+import express from 'express'
+import cors from 'cors'
+import Stripe from 'stripe'
+import dotenv from 'dotenv'
 
-// load your secret key from .env
+dotenv.config()
+
+const app    = express()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2022-11-15'
-});
+  apiVersion: '2022-11-15',
+})
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 app.post('/api/create-checkout-session', async (req, res) => {
-  const { items } = req.body;
+  const { items } = req.body
+
   if (!Array.isArray(items) || items.length === 0) {
-    return res.status(400).json({ error: 'No items provided' });
+    return res.status(400).json({ error: 'No items provided' })
   }
 
-  // build Stripe line_items
+  // We assume each item has { price: 'price_xxx', quantity: n }
   const line_items = items.map(i => ({
-    price_data: {
-      currency: 'usd',            // ← change to your currency
-      product_data: { name: i.name },
-      unit_amount: Math.round(i.price * 100), // dollars → cents
-    },
-    quantity: i.quantity || 1,
-  }));
+    price:    i.price,        // your Stripe Price ID
+    quantity: i.quantity || 1
+  }))
 
   try {
     const session = await stripe.checkout.sessions.create({
+      mode:        'payment',
       payment_method_types: ['card'],
-      mode: 'payment',
       line_items,
       success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url:  `${req.headers.origin}/cart`,
-    });
-    res.json({ url: session.url });
+      cancel_url:  `${req.headers.origin}/`,
+    })
+    res.json({ url: session.url })
   } catch (err) {
-    console.error('Stripe session creation error:', err);
-    res.status(500).json({ error: err.message });
+    console.error('🛑 stripe.checkout.sessions.create failed:', err)
+    res.status(500).json({ error: err.message })
   }
-});
+})
 
-const PORT = 4242;
-app.listen(PORT, () => console.log(`⚡ Stripe server listening on ${PORT}`));
+const PORT = process.env.PORT || 4242
+app.listen(PORT, () => {
+  console.log(`⚡️ Stripe server listening on http://localhost:${PORT}`)
+  console.log(`🔒 STRIPE_SECRET_KEY is ${process.env.STRIPE_SECRET_KEY?.slice(0,10)}…`)
+})
