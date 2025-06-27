@@ -17,6 +17,7 @@ export default function Cart({ isOpen, onClose }) {
       return {
         price:    item.priceId,          // your Stripe Price ID
         quantity: item.quantity || 1,
+        size:    item.size || null, // optional, if you have sizes 
       }
     })
 

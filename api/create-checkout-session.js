@@ -23,6 +23,7 @@ export default async function handler(req, res) {
       line_items: items.map(i => ({
         price:    i.price,     // must be your Stripe Price ID string
         quantity: i.quantity || 1,
+        size:   i.size || null, // optional, if you have sizes
       })),
       success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url:  `${req.headers.origin}/cart`,
