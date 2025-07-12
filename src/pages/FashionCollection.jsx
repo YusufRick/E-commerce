@@ -20,6 +20,7 @@ export default function FashionCollection() {
   const [items, setItems]         = useState([]);
   const [selectedSizes, setSizes] = useState({});       // { [id]: "M", … }
   const SIZE_OPTIONS = ["S", "M", "L"];
+  
 
   // 1️⃣ Load products from Firestore
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function FashionCollection() {
             priceId:  data.priceId,
             sizes:       data.sizes ?? (data.size ? [data.size] : []),
             image:       LOCAL_IMAGES[data.image] || LOCAL_IMAGES["UNDEFINED-Tee.png"],
+            stock: data.stock ?? 0
           };
         });
         setItems(products);
@@ -115,8 +117,9 @@ export default function FashionCollection() {
             <button
               className="add-cart-btn"
               onClick={() => handleAddToCart(item)}
+              disabled={item.stock === 0}
             >
-              Add to Cart
+              {item.stock === 0 ? "Out of Stock" : "Add to Cart"}
             </button>
           </div>
         ))}
