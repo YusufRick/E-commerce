@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Cart from '../components/Cart';
 import { motion } from 'framer-motion';
-import TitleLogo from '../assets/kasahara-logo.png';
+import TitleLogo from '../assets/kasaharared.png';
 import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/redshirtrbg.png';
 import ShortFilmsIcon from '../assets/cam2.png';
