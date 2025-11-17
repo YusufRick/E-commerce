@@ -66,7 +66,7 @@ export default function HomePage({ go }) {
 
         <div className="nav-item visuals" onClick={() => go('/visual')}>
           <img src={CanIcon} alt="Visuals" className="nav-icon" />
-          <div className="overlay">Visuals</div>
+          <div className="overlay">Highlights</div>
         </div>
       </div>
 
