@@ -7,7 +7,7 @@ import { CartContext }                       from '../context/CartContext';
 import Cart                                  from '../components/Cart';
 import CartIcon                              from '../assets/cart_icon.png';
 import fashion1Img                           from '../assets/starboitee.png';
-import sizeChartImg                          from '../assets/sizechart.png'; // NEW import
+import sizeChartImg                          from '../assets/sizechartnew.png'; // NEW import
 import "../ProductPage.css";
 import '../Collection.css';
 
