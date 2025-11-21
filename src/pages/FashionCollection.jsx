@@ -19,7 +19,7 @@ export default function FashionCollection() {
   const [cartOpen, setCartOpen]   = useState(false);
   const [items, setItems]         = useState([]);
   const [selectedSizes, setSizes] = useState({});       // { [id]: "M", … }
-  const SIZE_OPTIONS = ["S", "M", "L"];
+  const SIZE_OPTIONS = ["S", "M", "L", "XL", "XXL", "3XL"];
   
 
   // 1️⃣ Load products from Firestore
@@ -33,6 +33,7 @@ export default function FashionCollection() {
             id:          doc.id,
             name:        data.name,
             description: data.description,
+            status:      data.status,
             price:       data.price,
             priceId:  data.priceId,
             sizes:       data.sizes ?? (data.size ? [data.size] : []),
@@ -93,6 +94,7 @@ export default function FashionCollection() {
 
             <p className="name">{item.name}</p>
             <p className="description">{item.description}</p>
+            <p className="description">{item.status}</p>
             <p className="price">RM{item.price}</p>
 
             {item.sizes.length > 0 && (
