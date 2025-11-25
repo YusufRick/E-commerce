@@ -79,7 +79,7 @@ export default function Cart({ isOpen, onClose }) {
             ))}
           </ul>
           <div className="cart-total">
-            <strong>Total:</strong> ${cartTotal.toFixed(2)}
+            <strong>Total:</strong> RM{cartTotal.toFixed(2)}
           </div>
         </>
       )}
