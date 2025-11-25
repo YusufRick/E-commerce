@@ -41,7 +41,7 @@ export default function ProductPage() {
           description: data.description,
           price:       data.price,
           priceId:     data.priceId,
-          sizes:       Array.isArray(data.sizes) ? data.sizes : ['S','M','L'],
+          sizes:       Array.isArray(data.sizes) ? data.sizes : ['S','M','L','XL','XXL','3XL'],
           image:       LOCAL_IMAGES[data.image] || fashion1Img,
         });
       })
