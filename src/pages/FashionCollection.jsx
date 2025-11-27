@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { app } from "../firebase";            
+import { app } from "../firebase";
 import { CartContext } from "../context/CartContext";
 import Cart from "../components/Cart";
 import CartIcon from "../assets/cart_icon.png";
@@ -10,35 +10,40 @@ import "../Collection.css";
 
 import undefinedTee from "../assets/starboitee.png";
 // …and any other local imports
-const LOCAL_IMAGES = { "starboitee.png": undefinedTee /* … */ };
+const LOCAL_IMAGES = {
+  "starboitee.png": undefinedTee,
+  // add other mappings here if you have more images
+};
 
 export default function FashionCollection() {
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
 
-  const [cartOpen, setCartOpen]   = useState(false);
-  const [items, setItems]         = useState([]);
-  const [selectedSizes, setSizes] = useState({});       // { [id]: "M", … }
-  const SIZE_OPTIONS = ["S", "M", "L", "XL", "XXL", "3XL"];
-  
+  const [cartOpen, setCartOpen] = useState(false);
+  const [items, setItems] = useState([]);
+  const [selectedSizes, setSizes] = useState({}); // { [productId]: "M" }
 
-  // 1️⃣ Load products from Firestore
+  // Load products from Firestore
   useEffect(() => {
     const db = getFirestore(app);
+
     getDocs(collection(db, "Collection"))
       .then((snap) => {
         const products = snap.docs.map((doc) => {
           const data = doc.data();
           return {
-            id:          doc.id,
-            name:        data.name,
+            id: doc.id,
+            name: data.name,
             description: data.description,
-            status:      data.status,
-            price:       data.price,
-            priceId:  data.priceId,
-            sizes:       data.sizes ?? (data.size ? [data.size] : []),
-            image:       LOCAL_IMAGES[data.image] || LOCAL_IMAGES["starboitee.png"],
-            stock: data.stock ?? 0
+            status: data.status,
+            price: data.price,
+            priceId: data.priceId,
+            // 🔥 pull the array field "size" from Firestore
+            sizes: Array.isArray(data.size) ? data.size : [],
+            image:
+              LOCAL_IMAGES[data.image] ||
+              LOCAL_IMAGES["starboitee.png"],
+            stock: data.stock ?? 0,
           };
         });
         setItems(products);
@@ -46,12 +51,12 @@ export default function FashionCollection() {
       .catch(console.error);
   }, []);
 
-  // 2️⃣ When the user picks a size
+  // When the user picks a size
   const handleSizeSelect = (id, size) => {
-    setSizes(prev => ({ ...prev, [id]: size }));
+    setSizes((prev) => ({ ...prev, [id]: size }));
   };
 
-  // 3️⃣ Only add to cart if a size is chosen
+  // Only add to cart if a size is chosen
   const handleAddToCart = (item) => {
     const size = selectedSizes[item.id];
     if (!size) {
@@ -83,7 +88,7 @@ export default function FashionCollection() {
       <h2 className="Tittle">Collection</h2>
 
       <div className="grid">
-        {items.map(item => (
+        {items.map((item) => (
           <div key={item.id} className="item">
             <img
               src={item.image}
@@ -97,17 +102,20 @@ export default function FashionCollection() {
             <p className="description">{item.status}</p>
             <p className="price">RM{item.price}</p>
 
+            {/* Size dropdown from Firestore array */}
             {item.sizes.length > 0 && (
               <div className="size-dropdown-wrapper">
                 <select
                   className="size-dropdown"
                   value={selectedSizes[item.id] || ""}
-                  onChange={e => handleSizeSelect(item.id, e.target.value)}
+                  onChange={(e) =>
+                    handleSizeSelect(item.id, e.target.value)
+                  }
                 >
                   <option value="" disabled>
                     Size
                   </option>
-                  {SIZE_OPTIONS.map(sz => (
+                  {item.sizes.map((sz) => (
                     <option key={sz} value={sz}>
                       {sz}
                     </option>
