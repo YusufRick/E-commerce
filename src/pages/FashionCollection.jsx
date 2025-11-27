@@ -16,11 +16,13 @@ import "../Collection.css";
 // LOCAL IMAGE IMPORTS
 import starboiFront from "../assets/starboitee.png";
 import undefinedFront from "../assets/UNDEFINED-Tee.png";
+import starboiWhite from "../assets/sbwhitefront.png";
 
 // Map Firestore filenames → imported images
 const LOCAL_IMAGES = {
   "starboitee.png": starboiFront,
   "UNDEFINED-Tee.png": undefinedFront,
+  "sbwhitefront.png": starboiWhite,
 };
 
 export default function FashionCollection() {

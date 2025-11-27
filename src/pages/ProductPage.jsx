@@ -9,7 +9,10 @@ import Cart from "../components/Cart";
 import CartIcon from "../assets/cart_icon.png";
 
 import starboiImg from "../assets/starboitee.png";
+import starboiblackBack from "../assets/sbblackback.png";
 import undefinedImg from "../assets/UNDEFINED-Tee.png";
+import starboiWhite from "../assets/sbwhitefront.png";
+import starboiWhiteback from "../assets/sbwhiteback.png";
 import sizeChartImg from "../assets/starboisizingchart.png";
 
 import "../ProductPage.css";
@@ -18,7 +21,10 @@ import "../Collection.css";
 // Map Firestore filenames -> local assets
 const LOCAL_IMAGES = {
   "starboitee.png": starboiImg,
+  "sbblackback.png": starboiblackBack,
   "UNDEFINED-Tee.png": undefinedImg,
+  "sbwhitefront.png": starboiWhite,
+  "sbwhiteback.png": starboiWhiteback,
   "starboisizingchart.png": sizeChartImg,
 };
 
