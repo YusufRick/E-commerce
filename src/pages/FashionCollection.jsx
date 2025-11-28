@@ -169,7 +169,7 @@ export default function FashionCollection() {
                 : "text-neutral-500 border-transparent hover:text-neutral-300"
             }`}
           >
-            STARBOI
+            ST*RBOI
           </button>
 
           {/* UNDEFINED tab */}
@@ -191,16 +191,15 @@ export default function FashionCollection() {
       ================================= */}
       <section className="pt-10 pb-10 px-8 max-w-[1600px] mx-auto">
         <p className="text-xs tracking-[0.25em] text-neutral-400 mb-3">
-          SS25 COLLECTION
+          ISSUE 3
         </p>
 
         <h2 className="text-4xl md:text-6xl font-bold tracking-[0.05em] leading-tight mb-4">
-          NEW <br /> ARRIVALS
+          ST*RBOI <br />  MERCHANDISE
         </h2>
 
         <p className="text-neutral-400 max-w-md text-sm md:text-base leading-relaxed">
-          Explore our latest collection of premium streetwear. Designed for
-          those who define their own style.
+          A collaboration between Kasahara, HigherPact & Hell Boi.
         </p>
       </section>
 
@@ -236,7 +235,7 @@ export default function FashionCollection() {
                   {item.stock === 0 && (
                     <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                       <span className="text-xs tracking-[0.2em] text-white">
-                        SOLD OUT
+                        COMING SOON
                       </span>
                     </div>
                   )}
