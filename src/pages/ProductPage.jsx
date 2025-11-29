@@ -329,7 +329,7 @@ export default function ProductPage() {
 
           {/* Details */}
           <div className="space-y-4 pt-4 border-t border-neutral-800">
-            <p className="text-lg tracking-[0.15em] text-white">"Wear it like a St*r"</p>
+            <p className="text-lg tracking-[0.15em] text-white">"Wear it like a ST*R"</p>
           </div>
 
           {/* Size chart from Firestore (centered) */}
