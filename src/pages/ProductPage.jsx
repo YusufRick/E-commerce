@@ -329,19 +329,7 @@ export default function ProductPage() {
 
           {/* Details */}
           <div className="space-y-4 pt-4 border-t border-neutral-800">
-            <p className="text-xs tracking-[0.15em] text-white">DETAILS</p>
-            <ul className="space-y-2">
-              {product.status && (
-                <li className="text-sm text-neutral-400 flex items-start gap-2">
-                  <span className="text-white">—</span>
-                  {product.status}
-                </li>
-              )}
-              <li className="text-sm text-neutral-400 flex items-start gap-2">
-                <span className="text-white">—</span>
-                Stock: {product.stock}
-              </li>
-            </ul>
+            <p className="text-lg tracking-[0.15em] text-white">"Wear it like a St*r"</p>
           </div>
 
           {/* Size chart from Firestore (centered) */}
