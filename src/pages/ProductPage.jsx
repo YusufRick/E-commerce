@@ -114,18 +114,16 @@ export default function ProductPage() {
 
   const cartCount = cartItems.length;
 
-  const handleAddToCart = () => {
-    if (!product) return;
-    if (!selectedSize) {
-      alert("Please select a size before adding to cart.");
-      return;
-    }
-    addToCart({
-      ...product,
-      size: selectedSize,
-      quantity,
-    });
-  };
+  const handleAddToCart = (item) => {
+  if (!selectedSize) {
+    alert("Please select a size before adding to cart.");
+    return;
+  }
+
+  addToCart({ ...item, size: selectedSize });
+  setCartOpen(true); // optional but nice UX
+};
+
 
   if (loading) {
     return (
@@ -313,7 +311,7 @@ export default function ProductPage() {
           {/* Add to Cart */}
           <button
             disabled={!product.inStock || !selectedSize}
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart(product)}
             className={`w-full md:w-80 py-4 text-xs tracking-[0.2em] transition-all ${
               product.inStock && selectedSize
                 ? "bg-white text-black hover:bg-neutral-200"
