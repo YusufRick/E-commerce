@@ -14,15 +14,15 @@ import CartIcon from "../assets/cart_icon.png";
 import "../Collection.css";
 
 // LOCAL IMAGE IMPORTS
-import starboiFront from "../assets/starboitee.png";
+import starboiFront from "../assets/newblack1.png";
 import undefinedFront from "../assets/UNDEFINED-Tee.png";
-import starboiWhite from "../assets/sbwhitefront.png";
+import starboiWhite from "../assets/newwhite1.png";
 
 // Map Firestore filenames → imported images
 const LOCAL_IMAGES = {
-  "starboitee.png": starboiFront,
+  "newblack1.png": starboiFront,
   "UNDEFINED-Tee.png": undefinedFront,
-  "sbwhitefront.png": starboiWhite,
+  "newwhite1.png": starboiWhite,
 };
 
 export default function FashionCollection() {
@@ -65,7 +65,7 @@ export default function FashionCollection() {
           const finalImages =
             resolvedImages.length > 0
               ? resolvedImages
-              : [LOCAL_IMAGES["starboitee.png"]];
+              : [LOCAL_IMAGES["newblack1.png"]];
 
           return {
             id: doc.id,

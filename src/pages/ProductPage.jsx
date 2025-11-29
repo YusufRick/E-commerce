@@ -8,24 +8,26 @@ import { CartContext } from "../context/CartContext";
 import Cart from "../components/Cart";
 import CartIcon from "../assets/cart_icon.png";
 
-import starboiImg from "../assets/starboitee.png";
-import starboiblackBack from "../assets/sbblackback.png";
+import starboiImg from "../assets/newblack1.png";
+import starboiblackBack from "../assets/newblack2.png";
 import undefinedImg from "../assets/UNDEFINED-Tee.png";
-import starboiWhite from "../assets/sbwhitefront.png";
-import starboiWhiteback from "../assets/sbwhiteback.png";
+import starboiWhite from "../assets/newwhite1.png";
+import starboiWhiteback from "../assets/newwhite2.png";
 import sizeChartImg from "../assets/starboisizingchart.png";
+import keychainImg from "../assets/keychain.png";
 
 import "../ProductPage.css";
 import "../Collection.css";
 
 // Map Firestore filenames -> local assets
 const LOCAL_IMAGES = {
-  "starboitee.png": starboiImg,
-  "sbblackback.png": starboiblackBack,
+  "newblack1.png": starboiImg,
+  "newblack2.png": starboiblackBack,
   "UNDEFINED-Tee.png": undefinedImg,
-  "sbwhitefront.png": starboiWhite,
-  "sbwhiteback.png": starboiWhiteback,
+  "newwhite1.png": starboiWhite,
+  "newwhite2.png": starboiWhiteback,
   "starboisizingchart.png": sizeChartImg,
+  "keychain.png": keychainImg,
 };
 
 export default function ProductPage() {

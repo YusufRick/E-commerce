@@ -7,7 +7,7 @@ import ShirtIcon from '../assets/redshirtrbg.png';
 import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/camredrbg.png';
 import Media from '../assets/media-icon.png';
-import bgAudioFile from '../assets/HIGHKEY.mp3';
+import bgAudioFile from '../assets/muaysite.wav';
 import '../Homepage.css';
 
 export default function HomePage({ go }) {
