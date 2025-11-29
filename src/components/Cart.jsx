@@ -71,9 +71,10 @@ export default function Cart({ isOpen, onClose }) {
                   {item.size && <p>Size: {item.size}</p>}
                   <p>Qty: {item.quantity}</p>
                   <p>Price: RM{item.price.toFixed(2)}</p>
-                  <button onClick={() => removeFromCart(item)}>
-                    Remove
-                  </button>
+                  <button onClick={() => removeFromCart(item.id, item.size)}>
+  Remove
+</button>
+
                 </div>
               </li>
             ))}
