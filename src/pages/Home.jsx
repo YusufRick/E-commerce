@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Cart from '../components/Cart';
 import { motion } from 'framer-motion';
-import TitleLogo from '../assets/KasaharaStarboi.png';
+import TitleLogo from '../assets/kasahara-logo.png';
 import CartIcon from '../assets/cart_icon.png';
 import ShirtIcon from '../assets/redshirtrbg.png';
 import ShortFilmsIcon from '../assets/cam2.png';
 import CanIcon from '../assets/camredrbg.png';
 import Media from '../assets/media-icon.png';
-import bgAudioFile from '../assets/muaysite.wav';
+import bgAudioFile from '../assets/chrysalis.wav';
 import '../Homepage.css';
 
 export default function HomePage({ go }) {
