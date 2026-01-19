@@ -5,7 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements }   from '@stripe/react-stripe-js';
 
 import Router         from './router';
-import bgAudioFile from './assets/muaysite.wav';
+import bgAudioFile from './assets/chrysalis.wav';
 
 const stripePromise = loadStripe(
   import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
